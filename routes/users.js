@@ -6,10 +6,7 @@ const bcrypt = require('bcryptjs');
 const db = require('../db/models');
 const { loginUser, logoutUser } = require('../auth');
 
-/* GET users listing. */
-router.get('/', (req, res, next) => {
-  res.send('respond with a resource');
-});
+
 
 // POST route checks
 const userValidators = [
@@ -61,6 +58,13 @@ const userValidators = [
     }),
 ];
 
+router.get('/signup', csrfProtection, userValidators, asyncHandler(async (req, res) => {
+  const user = db.User.build();
+  res.render('sign-up', {
+    user,
+    csrfToken: req.csrfToken(),
+  });
+}))
 
 // POST signup
 router.post('/signup', csrfProtection, userValidators,
