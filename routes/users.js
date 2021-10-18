@@ -6,10 +6,7 @@ const bcrypt = require('bcryptjs');
 const db = require('../db/models');
 const { loginUser, logoutUser } = require('../auth');
 
-/* GET users listing. */
-router.get('/', (req, res, next) => {
-  res.send('respond with a resource');
-});
+
 
 // POST route checks
 const userValidators = [
@@ -61,12 +58,19 @@ const userValidators = [
     }),
 ];
 
+router.get('/signup', csrfProtection, userValidators, asyncHandler(async (req, res) => {
+  const user = db.User.build();
+  res.render('sign-up', {
+    user,
+    csrfToken: req.csrfToken(),
+  });
+}))
 
 // POST signup
 router.post('/signup', csrfProtection, userValidators,
-  asyncHandler( async(req, res) => {
-    const {username, email, password} = req.body
-    const user = db.User.build({username, email})
+  asyncHandler(async (req, res) => {
+    const { username, email, password } = req.body
+    const user = db.User.build({ username, email })
     const validatorErrors = validationResult(req);
 
     if (validatorErrors.isEmpty()) {
@@ -83,6 +87,50 @@ router.post('/signup', csrfProtection, userValidators,
         csrfToken: req.csrfToken(),
       });
     }
+  }))
+
+const loginValidators = [
+  check('username')
+    .exists({ checkFalsy: true })
+    .withMessage('Please provide a value for Username'),
+  check('password')
+    .exists({ checkFalsy: true })
+    .withMessage('Please provide a value for Password'),
+];
+
+router.post('/users/login', csrfProtection, loginValidators, asyncHandler(async (req, res) => {
+  const { username, password } = req.body;
+
+  let errors = [];
+  const validatorErrors = validationResult(req);
+
+  if (validatorErrors.isEmpty()) {
+
+    const user = await db.User.findOne({ where: { username } });
+
+    if (user !== null) {
+
+      const passwordMatch = await bcrypt.compare(password, user.hashedPassword.toString());
+
+      if (passwordMatch) {
+
+        loginUser(req, res, user);
+        return res.redirect('/questions');
+      }
+    }
+
+
+    errors.push('Login failed for the provided Username and Password');
+  } else {
+    errors = validatorErrors.array().map((error) => error.msg);
+  }
+
+  res.render('index', {
+    username,
+    errors,
+    csrfToken: req.csrfToken(),
+  });
+
 }))
 
 
