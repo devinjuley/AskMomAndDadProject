@@ -105,23 +105,21 @@ router.post('/users/login', csrfProtection, loginValidators, asyncHandler(async 
   const validatorErrors = validationResult(req);
 
   if (validatorErrors.isEmpty()) {
-    // Attempt to get the user by their email address.
+
     const user = await db.User.findOne({ where: { username } });
 
     if (user !== null) {
-      // If the user exists then compare their password
-      // to the provided password.
+
       const passwordMatch = await bcrypt.compare(password, user.hashedPassword.toString());
 
       if (passwordMatch) {
-        // If the password hashes match, then login the user
-        // and redirect them to the default route.
+
         loginUser(req, res, user);
         return res.redirect('/questions');
       }
     }
 
-    // Otherwise display an error message to the user.
+
     errors.push('Login failed for the provided Username and Password');
   } else {
     errors = validatorErrors.array().map((error) => error.msg);
