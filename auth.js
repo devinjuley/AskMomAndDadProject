@@ -4,6 +4,7 @@ const loginUser = (req, res, user) => {
   req.session.auth = {
     userId: user.id,
   };
+  console.log(req.session);
 };
 
 const logoutUser = (req, res) => {
