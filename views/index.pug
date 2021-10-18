@@ -1,5 +1,7 @@
 extends layout
 
+include utils.pug
+
 append head
   //- add page specific styles by appending to the head
   link(rel="stylesheet" href="/stylesheets/index.css")
@@ -7,5 +9,23 @@ append head
   script(src="/javascripts/index.js" type="module" defer)
 
 block content
-  h1= title
-  p Welcome to your Project Skeleton
+  div#sign-up
+    h1 Sign Up
+    +validationErrorSummary(errors)
+    form(action='/user/signup' method='post')
+      input(type='hidden' name='_csrf' value=csrfToken)
+      +field('Username', 'username', user.username)
+      +field('Email Address', 'emailAddress', user.emailAddress)
+      +field('Password', 'password', user.password, 'password')
+      +field('Confirm Password', 'confirmPassword', '', 'password')
+      div
+        button(type='submit') Register
+  div#login
+    h1 Login
+    +validationErrorSummary(errors)
+    form(action='/user/login' method='post')
+      input(type='hidden' name='_csrf' value=csrfToken)
+      +field('Username', 'username', user.username)
+      +field('Password', 'password', user.password, 'password')
+      div
+        button(type='submit') Login
