@@ -26,7 +26,7 @@ const userValidators = [
           }
         });
     }),
-  check('emailAddress')
+  check('email')
     .exists({ checkFalsy: true })
     .withMessage('Please provide a value for Email Address')
     .isLength({ max: 255 })
@@ -34,7 +34,7 @@ const userValidators = [
     .isEmail()
     .withMessage('Email Address is not a valid email')
     .custom((value) => {
-      return db.User.findOne({ where: { emailAddress: value } })
+      return db.User.findOne({ where: { email: value } })
         .then((user) => {
           if (user) {
             return Promise.reject('The provided Email Address is already in use by another account');
@@ -65,8 +65,8 @@ const userValidators = [
 // POST signup
 router.post('/signup', csrfProtection, userValidators,
   asyncHandler( async(req, res) => {
-    const {username, emailAddress, password} = req.body
-    const user = db.User.build({username, emailAddress})
+    const {username, email, password} = req.body
+    const user = db.User.build({username, email})
     const validatorErrors = validationResult(req);
 
     if (validatorErrors.isEmpty()) {
