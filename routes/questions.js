@@ -21,6 +21,14 @@ router.get('/new', requireAuth, csrfProtection, asyncHandler(async(req, res) => 
   });
 }))
 
-router.post('/')
 
+router.post('/new', requireAuth, csrfProtection, asyncHandler(async(req, res) => {
+  const {title, content, category} = req.body
+  console.log(req.body)
+  const userId=req.session.auth.userId;
+  const question = await db.Question.create({title, content, userId, categoryId:category});
+  res.redirect('/questions');
+}))
+
+//const questions = await db.Question.findAll({include: ['User', 'Category']});
 module.exports = router;
