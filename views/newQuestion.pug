@@ -12,10 +12,10 @@ block content
       br
       label(for='content') Content
       textarea(name='content' value=content)
-      //- br
-      //- label(for="category") Category
-      //- select(name="category" required)
-      //-   each category in categories
-      //-     option(value= category.id)=category.name
-      //- br
+      br
+      label(for="category") Category
+      select(name="category" required)
+        each category in categories
+          option(value= category.id)=category.name
+      br
       button(type="submit") Submit
