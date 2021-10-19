@@ -9,3 +9,17 @@ block content
       if userId === question.User.id
         button(type="submit") Edit
         button(type="submit") Delete
+    div#answer-box
+      form(action=`/questions/1` method='post')
+       input(type='hidden' name='_csrf' value=csrfToken)
+       textarea(name='content' value=content)
+       button(type='submit') Add Answer
+    each answer in answers
+      div.answer-feed
+       h3= answer.User.username
+       span= answer.content
+       if userId === answer.User.id
+        button(type="submit") Edit
+        button(type="submit") Delete
+
+      
