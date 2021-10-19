@@ -129,5 +129,9 @@ router.post('/login', csrfProtection, loginValidators, asyncHandler(async (req, 
 
 }))
 
+router.post('/logout', (req, res) => {
+  logoutUser(req, res);
+  res.redirect('/');
+});
 
 module.exports = router;
