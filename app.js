@@ -34,9 +34,10 @@ app.use(
     saveUninitialized: false,
     resave: false,
   })
-);
+  );
 
-// create Session table if it doesn't already exist
+  // create Session table if it doesn't already exist
+app.use(restoreUser);
 store.sync();
 
 app.use('/', indexRouter);
