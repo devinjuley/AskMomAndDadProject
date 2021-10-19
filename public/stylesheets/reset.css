@@ -25,3 +25,11 @@ body, header, nav {
 h1 {
   font-size: 2rem;
 }
+
+#question-box{
+  display:inline;
+  border: solid 1px grey;
+  width: 100px;
+  height: 100px;
+
+}

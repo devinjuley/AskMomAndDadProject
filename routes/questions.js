@@ -7,9 +7,11 @@ const db = require('../db/models');
 const { loginUser, logoutUser, requireAuth } = require('../auth');
 
 
-router.get('/', requireAuth, (req,res) => {
-  res.render('questionFeed')
-})
+router.get('/', requireAuth, asyncHandler (async(req,res) => {
+  const questions = await db.Question.findAll({include: db.Category})
+  console.log("this is questions!!!!!",questions)
+  res.render('questionFeed', {questions})
+}))
 
 router.get('/new', requireAuth, csrfProtection, asyncHandler(async(req, res) => {
   const question = db.Question.build();
