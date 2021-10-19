@@ -43,10 +43,29 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/questions', questionsRouter);
 
+// Custom error handlers
+
 // catch 404 and forward to error handler
-app.use(function (req, res, next) {
-  next(createError(404));
+// app.use(function (req, res, next) {
+//   next(createError(404));
+// });
+app.use((req, res, next) => {
+  const err = new Error('The requested page couldn\'t be found.');
+  err.status = 404;
+  next(err);
 });
+
+// // Error handler for 404 errors.
+// app.use((err, req, res, next) => {
+//   if (err.status === 404) {
+//     res.status(404);
+//     res.render('page-not-found', {
+//       title: 'Page Not Found',
+//     });
+//   } else {
+//     next(err);
+//   }
+// });
 
 
 // error handler

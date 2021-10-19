@@ -16,6 +16,6 @@ block content
       label(for="category") Category
       select(name="category" required)
         each category in categories
-          option(value= category.id)=category.name
+          option(value= category.id)=category.category
       br
       button(type="submit") Submit

@@ -13,8 +13,10 @@ router.get('/', (req,res) => {
 
 router.get('/new', csrfProtection, asyncHandler(async(req, res) => {
   const question = db.Question.build();
+  const categories = await db.Category.findAll();
   res.render('newQuestion', {     // categories
     question,
+    categories,
     csrfToken: req.csrfToken(),
   });
 }))
