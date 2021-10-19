@@ -61,6 +61,18 @@ router.post('/:id(\\d+)', requireAuth, csrfProtection, answerValidator, asyncHan
   const userId = req.session.auth.userId;
   const questionId = parseInt(req.params.id, 10);
   const answer = await db.Answer.build({ content, userId, questionId })
+
+  const question = await db.Question.findByPk(questionId, {
+    include: [db.Category, db.User]
+  })
+
+  const answers = await db.Answer.findAll({
+    where: {
+      questionId: question.id
+    },
+    include: db.User
+  })
+
   const validatorErrors = validationResult(req)
 
   if (validatorErrors.isEmpty()) {
@@ -68,10 +80,11 @@ router.post('/:id(\\d+)', requireAuth, csrfProtection, answerValidator, asyncHan
     res.redirect(`/questions/${questionId}`)
   } else {
     const errors = validatorErrors.array().map((error) => error.msg)
-    res.render('singleQuestion', { csrfToken: req.csrfToken, errors, content })
+    res.render('singleQuestion', { csrfToken: req.csrfToken(),question,answers, errors, content, user: req.body })
   }
-
-
 }))
+
+
+
 
 module.exports = router;

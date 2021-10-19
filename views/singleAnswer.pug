@@ -1,0 +1,22 @@
+extends layout
+include utils
+block content
+  +validationErrorSummary(errors)
+  div#answer-box
+    h3= answer.User.username
+    p= answer.content
+    if userId === answer.User.id
+      button(type="submit") Edit
+      button(type="submit") Delete
+  div#comment-box
+    form(action=`/answers/${answer.id}` method='post')
+      input(type='hidden' name='_csrf' value=csrfToken)
+      textarea(name='content' value=content)
+      button(type='submit') Add Comment
+  each comment in comments
+    div.comment-feed
+      h3= comment.User.username
+      span= comment.content
+      if userId === comment.User.id
+      button(type="submit") Edit
+      button(type="submit") Delete
