@@ -43,7 +43,7 @@ router.get('/:id(\\d+)', requireAuth, csrfProtection, asyncHandler(async (req, r
     where: {
       questionId: question.id
     },
-    include: User
+    include: db.User
   })
 
   res.render('singleQuestion', { question, userId, answers, csrfToken: req.csrfToken() })
