@@ -1,11 +1,9 @@
 extends layout
 include utils
 block content
-  each question in questions
     div#question-box
       h3= question.User.username
-      a(href=`/questions/${question.id}`)= question.title
-    div
+      h2= question.title
       span= question.Category.category
       p= question.content
       if userId === question.User.id

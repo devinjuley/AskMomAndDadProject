@@ -7,6 +7,7 @@ const db = require('../db/models');
 const { loginUser, logoutUser, requireAuth } = require('../auth');
 
 
+
 router.get('/', requireAuth, asyncHandler(async (req, res) => {
   const questions = await db.Question.findAll({ include: [db.Category, db.User] })
   // const user = await db.User.findByPk(questions.userId)
@@ -33,5 +34,15 @@ router.post('/new', requireAuth, csrfProtection, asyncHandler(async (req, res) =
   res.redirect('/questions');
 }))
 
-//const questions = await db.Question.findAll({include: ['User', 'Category']});
+router.get('/:id(\\d+)', requireAuth, csrfProtection, asyncHandler(async (req, res) => {
+  const questionId = parseInt(req.params.id, 10);
+  const userId = req.session.auth.userId;
+  const question = await db.Question.findByPk(questionId, {
+    include: [db.Category, db.User]
+  })
+  // const buildQuestion = db.Question.build()
+  res.render('singleQuestion', { question, userId })
+}))
+
+
 module.exports = router;
