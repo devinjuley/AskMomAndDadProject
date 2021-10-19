@@ -1,0 +1,25 @@
+extends layout
+include utils
+block content
+    div#question-box
+      h3= question.User.username
+      h2= question.title
+      span= question.Category.category
+      p= question.content
+      if userId === question.User.id
+        button(type="submit") Edit
+        button(type="submit") Delete
+    div#answer-box
+      form(action=`/questions/${question.id}` method='post')
+       input(type='hidden' name='_csrf' value=csrfToken)
+       textarea(name='content' value=content)
+       button(type='submit') Add Answer
+    each answer in answers
+      div.answer-feed
+       h3= answer.User.username
+       span= answer.content
+       if userId === answer.User.id
+        button(type="submit") Edit
+        button(type="submit") Delete
+
+      
