@@ -7,13 +7,14 @@ const db = require('../db/models');
 const { loginUser, logoutUser, requireAuth } = require('../auth');
 
 
-router.get('/', requireAuth, asyncHandler (async(req,res) => {
-  const questions = await db.Question.findAll({include: db.Category})
-  console.log("this is questions!!!!!",questions)
-  res.render('questionFeed', {questions})
+router.get('/', requireAuth, asyncHandler(async (req, res) => {
+  const questions = await db.Question.findAll({ include: [db.Category, db.User] })
+  // const user = await db.User.findByPk(questions.userId)
+  const userId = req.session.auth.userId;
+  res.render('questionFeed', { questions, userId })
 }))
 
-router.get('/new', requireAuth, csrfProtection, asyncHandler(async(req, res) => {
+router.get('/new', requireAuth, csrfProtection, asyncHandler(async (req, res) => {
   const question = db.Question.build();
   const categories = await db.Category.findAll();
   res.render('newQuestion', {     // categories
@@ -24,11 +25,11 @@ router.get('/new', requireAuth, csrfProtection, asyncHandler(async(req, res) => 
 }))
 
 
-router.post('/new', requireAuth, csrfProtection, asyncHandler(async(req, res) => {
-  const {title, content, category} = req.body
+router.post('/new', requireAuth, csrfProtection, asyncHandler(async (req, res) => {
+  const { title, content, category } = req.body
   console.log(req.body)
-  const userId=req.session.auth.userId;
-  const question = await db.Question.create({title, content, userId, categoryId:category});
+  const userId = req.session.auth.userId;
+  const question = await db.Question.create({ title, content, userId, categoryId: category });
   res.redirect('/questions');
 }))
 
