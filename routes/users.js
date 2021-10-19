@@ -100,8 +100,8 @@ const loginValidators = [
     .withMessage('Please provide a value for Password'),
 ];
 
-router.post('/users/login', csrfProtection, loginValidators, asyncHandler(async (req, res) => {
-  const { username, password } = req.body;
+router.post('/login', csrfProtection, loginValidators, asyncHandler(async (req, res) => {
+  const { username, password } = req.body
 
   let errors = [];
   const validatorErrors = validationResult(req);
@@ -116,16 +116,16 @@ router.post('/users/login', csrfProtection, loginValidators, asyncHandler(async 
       }
     }
 
+
     errors.push('Login failed for the provided Username and Password');
   } else {
     errors = validatorErrors.array().map((error) => error.msg);
-    res.render('index', {
-      username,
-      errors,
-      csrfToken: req.csrfToken(),
-    });
   }
-
+  res.render('index', {
+    user: req.body,
+    errors,
+    csrfToken: req.csrfToken(),
+  });
 
 }))
 
