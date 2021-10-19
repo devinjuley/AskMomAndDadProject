@@ -81,7 +81,7 @@ router.post('/signup', csrfProtection, userValidators,
       res.redirect('/questions');
     } else {
       const errors = validatorErrors.array().map((error) => error.msg);
-      res.render('index', {
+      res.render('sign-up', {
         user,
         errors,
         csrfToken: req.csrfToken(),
@@ -89,6 +89,8 @@ router.post('/signup', csrfProtection, userValidators,
     }
   }))
 
+
+// login
 const loginValidators = [
   check('username')
     .exists({ checkFalsy: true })
@@ -105,31 +107,25 @@ router.post('/users/login', csrfProtection, loginValidators, asyncHandler(async 
   const validatorErrors = validationResult(req);
 
   if (validatorErrors.isEmpty()) {
-
     const user = await db.User.findOne({ where: { username } });
-
     if (user !== null) {
-
       const passwordMatch = await bcrypt.compare(password, user.hashedPassword.toString());
-
       if (passwordMatch) {
-
         loginUser(req, res, user);
         return res.redirect('/questions');
       }
     }
 
-
     errors.push('Login failed for the provided Username and Password');
   } else {
     errors = validatorErrors.array().map((error) => error.msg);
+    res.render('index', {
+      username,
+      errors,
+      csrfToken: req.csrfToken(),
+    });
   }
 
-  res.render('index', {
-    username,
-    errors,
-    csrfToken: req.csrfToken(),
-  });
 
 }))
 
