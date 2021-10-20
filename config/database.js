@@ -22,7 +22,7 @@ module.exports = {
     dialect: 'postgres',
   },
   production: {
-    use_env_variable: 'postgres://nqsojyzluolvzi:37ad1ea64f15370ff1ca50b0ce32b9ff158f349d76fd618544db87bc07f5cd34@ec2-44-195-240-222.compute-1.amazonaws.com:5432/d6ceduh3a1e9lp',
+    use_env_variable: 'DATABASE_URL',
     dialect: 'postgres',
     seederStorage: 'sequelize',
   }
