@@ -87,7 +87,7 @@ router.post('/:id(\\d+)', requireAuth, csrfProtection, answerValidator, asyncHan
 
 
 // //form request
-router.post('/:id(\\d+)/delete', csrfProtection, asyncHandler(async(req, res) => {
+router.post('/:id(\\d+)/delete', csrfProtection, asyncHandler(async (req, res) => {
   const questionId = req.params.id;
   console.log("this is questionId", questionId)
   const question = await db.Question.findByPk(questionId)
@@ -107,6 +107,22 @@ router.delete('/:id(\\d+)', asyncHandler(async (req, res) => {
   }
 }))
 
+//get edit question page
+router.get('/:id(\\d+)/edit', csrfProtection, async (req, res) => {
+  const question = await db.Question.findByPk(req.params.id, {
+    include: db.Category
+  });
+  const categories = await db.Category.findAll();
+  console.log(question.Category)
+  res.render('edit-question', { csrfToken: req.csrfToken(), question, categories })
+})
 
+//edit question
+// router.post('/:id/comments/:commId/edit', csrfProtection, async(req, res) => {
+//   const comment = await Comment.findByPk(req.params.commId);
+//   comment.content = req.body.content;
+//   await comment.save()
+//   res.redirect(`/posts/${req.params.id}`)
+// })
 
 module.exports = router;

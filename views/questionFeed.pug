@@ -9,7 +9,9 @@ block content
           p= question.content
           if userId === question.User.id
             button(id=`question-delete-${question.id}` type="submit").delete-btn Delete
+            form(action=`/questions/${question.id}/edit` method='get')
+             input(type='hidden' name='_csrf' value=csrfToken)
+             button(id=`question-edit-${question.id}` type="submit").edit-btn Edit
           //- form(action=`/questions/${question.id}/delete` method="post")
           //-   input(type="hidden" name="_csrf" value=csrfToken)
           //-   button(id=`delete-${question.id}`).delete-btn Delete Question
-            //- button(type="submit") Edit
