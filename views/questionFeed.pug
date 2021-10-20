@@ -2,7 +2,7 @@ extends layout
 include utils
 block content
     each question in questions
-      div(id=`question-container-${question.id}`)
+      div.post(id=`question-container-${question.id}`)
         a(href=`/questions/${question.id}`)= question.title
         div
           span= question.Category.category
