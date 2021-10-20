@@ -60,3 +60,24 @@ for (let i = 0; i < commentButtons.length; i++) {
     })
 
 }
+
+// const questionEditButtons = document.querySelectorAll('.edit-btn')
+// // const answerId = document.getElementById(`answer-delete-${answer.id}`)
+// for (let i = 0; i < questionEditButtons.length; i++) {
+//     const questionEditButton = questionEditButtons[i];
+//     questionEditButton.addEventListener('click', async (e) => {
+//         e.preventDefault();
+
+//         const questionId = e.target.id.split('-')[2]
+//         const res = await fetch(`/questions/${questionId}`, {
+//             method: 'DELETE'
+//         })
+
+//         const data = await res.json()
+//         if (data.message === "Success") {
+//             const container = document.querySelector(`#comment-container-${commentId}`)
+//             container.remove()
+//         }
+//     })
+
+// }
