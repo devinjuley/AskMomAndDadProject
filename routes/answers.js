@@ -8,7 +8,7 @@ const { loginUser, logoutUser, requireAuth } = require('../auth');
 
 
 
-router.get('/:id(\\d+)', requireAuth, csrfProtection, asyncHandler (async(req,res) => {
+router.get('/:id(\\d+)', requireAuth, csrfProtection, asyncHandler(async (req, res) => {
   const answerId = parseInt(req.params.id, 10);
   const userId = req.session.auth.userId;
   const answer = await db.Answer.findByPk(answerId, {
@@ -20,7 +20,7 @@ router.get('/:id(\\d+)', requireAuth, csrfProtection, asyncHandler (async(req,re
     },
     include: db.User
   })
-  res.render('singleAnswer', { answer, userId, comments,csrfToken: req.csrfToken() })
+  res.render('singleAnswer', { answer, userId, comments, csrfToken: req.csrfToken() })
 }))
 
 const commentValidator = [
@@ -28,9 +28,10 @@ const commentValidator = [
     .exists({ checkFalsy: true })
     .withMessage('Please provide a comment'),
 ]
-
-router.post('/:id(\\d+)', requireAuth, csrfProtection, commentValidator, asyncHandler (async(req,res) => {
+//create a comment
+router.post('/:id(\\d+)', requireAuth, csrfProtection, commentValidator, asyncHandler(async (req, res) => {
   const { content } = req.body;
+  console.log(req.params)
   const validatorErrors = validationResult(req)
   const userId = req.session.auth.userId;
   const answerId = parseInt(req.params.id, 10);
@@ -51,9 +52,34 @@ router.post('/:id(\\d+)', requireAuth, csrfProtection, commentValidator, asyncHa
     res.redirect(`/answers/${answerId}`)
   } else {
     const errors = validatorErrors.array().map((error) => error.msg)
-    res.render('singleAnswer', { csrfToken: req.csrfToken(), errors, userId, content, answer, comments})
+    res.render('singleAnswer', { csrfToken: req.csrfToken(), errors, userId, content, answer, comments })
   }
 }))
+
+//delete an answer
+router.delete('/:id(\\d+)', asyncHandler(async (req, res) => {
+  const answerId = req.params.id
+  const answer = await db.Answer.findByPk(answerId)
+  if (answer) {
+    await answer.destroy()
+    res.json({ message: "Success" })
+  } else {
+    res.json({ message: "Failure" })
+  }
+}))
+
+//delete a comment
+// router.delete('/:id(\\d+)', asyncHandler(async (req, res) => {
+//   const answerId = req.params.id
+//   const answer = await db.Answer.findByPk(answerId)
+//   if (answer) {
+//     await answer.destroy()
+//     res.json({ message: "Success" })
+//   } else {
+//     res.json({ message: "Failure" })
+//   }
+// }))
+
 
 
 module.exports = router;
