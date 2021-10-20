@@ -54,15 +54,20 @@ header {
   padding: 30px 10%;
 }
 
-header img {
-  height: 30%;
-  width: 30%;
+#logo {
+  height: 25px;
+  width: 150px;
+  background: no-repeat url("https://i.imgur.com/22BqSWG.png");
+  background-size: 100%;
+  border: 0px;
+  cursor: pointer;
 }
 
 nav a {
   list-style: none;
   display: inline-block;
   padding: 0px 20px;
+  text-decoration: none;
 }
 
 nav li {
