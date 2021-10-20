@@ -60,6 +60,8 @@ nav {
   align-items: stretch;
   justify-content: space-around;
   padding: 5px;
+  flex-wrap: wrap-reverse;
+  white-space:nowrap
 }
 
 #logo {
@@ -93,7 +95,18 @@ nav li {
 nav li:hover {
   color: rgb(128, 31, 28);
 }
+.logoutButton {
+  background-color: white;
+  color: rgb(185, 43, 39);
+  border: 2px solid rgb(185, 43, 39);
+  border-radius: 50px;
+  font-size: 14px;
+}
 
+.logoutButton:hover {
+  background-color: rgba(185, 43, 39, 0.5);
+  color: white;
+}
 .searchbutton {
   padding: 5px 25px;
   background-color: rgb(185, 43, 39);
