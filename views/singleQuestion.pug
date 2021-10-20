@@ -19,6 +19,7 @@ block content
       div.answer-feed
        h3= answer.User.username
        span= answer.content
+       br
        a(href=`/answers/${answer.id}`) Comments
        if userId === answer.User.id
         button(type="submit") Edit
