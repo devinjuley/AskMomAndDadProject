@@ -56,7 +56,6 @@ const answerValidator = [
 ]
 
 
-
 router.post('/:id(\\d+)', requireAuth, csrfProtection, answerValidator, asyncHandler(async (req, res) => {
   const { content } = req.body;
   const userId = req.session.auth.userId;
@@ -86,13 +85,15 @@ router.post('/:id(\\d+)', requireAuth, csrfProtection, answerValidator, asyncHan
 }))
 
 
+
 // //form request
-// router.post('/:id(\\d+)/delete', csrfProtection, asyncHandler(async(req, res) => {
-//   const questionId = req.params.id;
-//   const question = await db.Question.findByPk(questionId)
-//   await question.destroy();
-//   res.redirect('/questions')
-// }))
+router.post('/:id(\\d+)/delete', csrfProtection, asyncHandler(async(req, res) => {
+  const questionId = req.params.id;
+  console.log("this is questionId", questionId)
+  const question = await db.Question.findByPk(questionId)
+  await question.destroy();
+  res.redirect('/questions')
+}))
 
 //ajax request
 router.delete('/:id(\\d+)', asyncHandler(async (req, res) => {
@@ -105,8 +106,6 @@ router.delete('/:id(\\d+)', asyncHandler(async (req, res) => {
     res.json({ message: "Failure" })
   }
 }))
-
-
 
 
 
