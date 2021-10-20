@@ -14,7 +14,7 @@ block content
       textarea(name='content' value=content)
       button(type='submit') Add Comment
   each comment in comments
-    div(id=`comment-container-${comment.id}`)
+    div.post(id=`comment-container-${comment.id}`)
       h3= comment.User.username
       span= comment.content
       if userId === comment.User.id

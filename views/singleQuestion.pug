@@ -20,7 +20,7 @@ block content
        textarea(name='content' value=content)
        button(type='submit') Add Answer
     each answer in answers
-      div(id=`answer-container-${answer.id}`)
+      div.post(id=`answer-container-${answer.id}`)
         h3= answer.User.username
         span= answer.content
         a(href=`/answers/${answer.id}`) Comments
