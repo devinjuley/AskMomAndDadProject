@@ -81,7 +81,7 @@ router.post('/:id(\\d+)', requireAuth, csrfProtection, answerValidator, asyncHan
     res.redirect(`/questions/${questionId}`)
   } else {
     const errors = validatorErrors.array().map((error) => error.msg)
-    res.render('singleQuestion', { csrfToken: req.csrfToken(),question,answers, errors, content, user: req.body })
+    res.render('singleQuestion', { csrfToken: req.csrfToken(), question, answers, errors, content, user: req.body })
   }
 }))
 
@@ -95,14 +95,14 @@ router.post('/:id(\\d+)', requireAuth, csrfProtection, answerValidator, asyncHan
 // }))
 
 //ajax request
-router.delete('/:id(\\d+)/',asyncHandler (async(req, res) => {
+router.delete('/:id(\\d+)', asyncHandler(async (req, res) => {
   const questionId = req.params.id
   const question = await db.Question.findByPk(questionId)
   if (question) {
-      await question.destroy()
-      res.json({message: "Success"})
+    await question.destroy()
+    res.json({ message: "Success" })
   } else {
-      res.json({message: "Failure"})
+    res.json({ message: "Failure" })
   }
 }))
 

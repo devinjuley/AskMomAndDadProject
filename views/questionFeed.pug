@@ -2,13 +2,13 @@ extends layout
 include utils
 block content
     each question in questions
-      div(id=`question-container-${question.id}`).question-container
+      div(id=`question-container-${question.id}`)
         a(href=`/questions/${question.id}`)= question.title
-      div
-        span= question.Category.category
-        p= question.content
-        if userId === question.User.id
-          button(type="submit").delete-btn Delete
+        div
+          span= question.Category.category
+          p= question.content
+          if userId === question.User.id
+            button(id=`question-delete-${question.id}` type="submit").delete-btn Delete
           //- form(action=`/questions/${question.id}/delete` method="post")
           //-   input(type="hidden" name="_csrf" value=csrfToken)
           //-   button(id=`delete-${question.id}`).delete-btn Delete Question
