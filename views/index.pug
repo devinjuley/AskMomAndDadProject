@@ -21,6 +21,7 @@ html
             form(action='/users/login' method='post')
               input(type='hidden' name='_csrf' value=csrfToken)
               +field('', 'username', user.username, placeholder = "Username")
+              br
               +field('', 'password', '', 'password', placeholder = "Password")
               div#splashbutton
                 button(type='submit') Login
