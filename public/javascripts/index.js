@@ -1,5 +1,3 @@
-
-console.log('this is a test')
 const buttons = document.querySelectorAll('.delete-btn')
 
 for (let i = 0; i < buttons.length; i++) {
@@ -21,20 +19,24 @@ for (let i = 0; i < buttons.length; i++) {
 }
 
 
+const ansButtons = document.querySelectorAll('.delete-ans-btn')
+// const answerId = document.getElementById(`answer-delete-${answer.id}`)
+for (let i = 0; i < ansButtons.length; i++) {
+    const ansButton = ansButtons[i];
+    ansButton.addEventListener('click', async (e) => {
+        e.preventDefault();
+        const questionId = e.target.id.split('-')[2]
+        const res = await fetch(`/questions/${questionId}`, {
+            method: 'DELETE'
+        })
 
+        const data = await res.json()
+        if (data.message === "Success") {
+            const answerId = e.target.id.split('-')[2]
 
+            const container = document.querySelector(`#answer-container-${answerId}`)
+            container.remove()
+        }
+    })
 
-// const deleteButton = document.createElement('button');
-// deleteButton.className = "delete-button";
-// deleteButton.style.marginLeft = "45px";
-// deleteButton.innerText = 'Delete';
-// deleteButton.addEventListener('click', e => {
-//     // Remove comment from HTML DOM
-//     newCommentContainer.remove();
-// });
-
-
-
-
-
-// }
+}
