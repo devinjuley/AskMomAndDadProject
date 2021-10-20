@@ -8,10 +8,10 @@ const { loginUser, logoutUser, requireAuth } = require('../auth');
 
 
 
-router.get('/', requireAuth, asyncHandler(async (req, res) => {
+router.get('/', requireAuth, csrfProtection, asyncHandler(async (req, res) => {
   const questions = await db.Question.findAll({ include: [db.Category, db.User] })
   const userId = req.session.auth.userId;
-  res.render('questionFeed', { questions, userId })
+  res.render('questionFeed', { questions, userId, csrfToken: req.csrfToken() })
 }))
 
 router.get('/new', requireAuth, csrfProtection, asyncHandler(async (req, res) => {
@@ -56,11 +56,24 @@ const answerValidator = [
 ]
 
 
+
 router.post('/:id(\\d+)', requireAuth, csrfProtection, answerValidator, asyncHandler(async (req, res) => {
   const { content } = req.body;
   const userId = req.session.auth.userId;
   const questionId = parseInt(req.params.id, 10);
   const answer = await db.Answer.build({ content, userId, questionId })
+
+  const question = await db.Question.findByPk(questionId, {
+    include: [db.Category, db.User]
+  })
+
+  const answers = await db.Answer.findAll({
+    where: {
+      questionId: question.id
+    },
+    include: db.User
+  })
+
   const validatorErrors = validationResult(req)
 
   if (validatorErrors.isEmpty()) {
@@ -68,10 +81,33 @@ router.post('/:id(\\d+)', requireAuth, csrfProtection, answerValidator, asyncHan
     res.redirect(`/questions/${questionId}`)
   } else {
     const errors = validatorErrors.array().map((error) => error.msg)
-    res.render('singleQuestion', { csrfToken: req.csrfToken, errors, content })
+    res.render('singleQuestion', { csrfToken: req.csrfToken(), question, answers, errors, content, user: req.body })
   }
-
-
 }))
+
+
+// //form request
+// router.post('/:id(\\d+)/delete', csrfProtection, asyncHandler(async(req, res) => {
+//   const questionId = req.params.id;
+//   const question = await db.Question.findByPk(questionId)
+//   await question.destroy();
+//   res.redirect('/questions')
+// }))
+
+//ajax request
+router.delete('/:id(\\d+)', asyncHandler(async (req, res) => {
+  const questionId = req.params.id
+  const question = await db.Question.findByPk(questionId)
+  if (question) {
+    await question.destroy()
+    res.json({ message: "Success" })
+  } else {
+    res.json({ message: "Failure" })
+  }
+}))
+
+
+
+
 
 module.exports = router;

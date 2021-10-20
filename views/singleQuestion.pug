@@ -1,6 +1,7 @@
 extends layout
 include utils
 block content
+    +validationErrorSummary(errors)
     div#question-box
       h3= question.User.username
       h2= question.title
@@ -8,7 +9,7 @@ block content
       p= question.content
       if userId === question.User.id
         button(type="submit") Edit
-        button(type="submit") Delete
+        button(type="submit").delete-btn Delete
     div#answer-box
       form(action=`/questions/${question.id}` method='post')
        input(type='hidden' name='_csrf' value=csrfToken)
@@ -18,8 +19,7 @@ block content
       div.answer-feed
        h3= answer.User.username
        span= answer.content
+       a(href=`/answers/${answer.id}`) Comments
        if userId === answer.User.id
         button(type="submit") Edit
         button(type="submit") Delete
-
-      

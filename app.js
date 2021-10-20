@@ -10,6 +10,9 @@ const {restoreUser} = require('./auth')
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const questionsRouter = require('./routes/questions');
+const answersRouter= require('./routes/answers');
+
+
 const {v4: uuidv4} = require('uuid');
 const { sessionSecret } = require('./config');
 console.log(uuidv4())
@@ -43,6 +46,7 @@ store.sync();
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/questions', questionsRouter);
+app.use('/answers', answersRouter);
 
 // Custom error handlers
 

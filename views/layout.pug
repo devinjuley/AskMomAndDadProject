@@ -4,5 +4,7 @@ html
       block head
         title="Express Starter App"
         link(rel='stylesheet' href='/stylesheets/reset.css')
+        script(src='/javascripts/index.js' type='module')
   body
-    block content
+      include navBar
+      block content
