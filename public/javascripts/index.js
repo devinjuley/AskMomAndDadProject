@@ -25,15 +25,14 @@ for (let i = 0; i < ansButtons.length; i++) {
     const ansButton = ansButtons[i];
     ansButton.addEventListener('click', async (e) => {
         e.preventDefault();
-        const questionId = e.target.id.split('-')[2]
-        const res = await fetch(`/questions/${questionId}`, {
+
+        const answerId = e.target.id.split('-')[2]
+        const res = await fetch(`/answers/${answerId}`, {
             method: 'DELETE'
         })
 
         const data = await res.json()
         if (data.message === "Success") {
-            const answerId = e.target.id.split('-')[2]
-
             const container = document.querySelector(`#answer-container-${answerId}`)
             container.remove()
         }
