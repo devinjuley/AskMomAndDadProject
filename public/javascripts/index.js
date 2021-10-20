@@ -39,3 +39,24 @@ for (let i = 0; i < ansButtons.length; i++) {
     })
 
 }
+
+const commentButtons = document.querySelectorAll('.delete-cmt-btn')
+// const answerId = document.getElementById(`answer-delete-${answer.id}`)
+for (let i = 0; i < commentButtons.length; i++) {
+    const commentButton = commentButtons[i];
+    commentButton.addEventListener('click', async (e) => {
+        e.preventDefault();
+
+        const commentId = e.target.id.split('-')[2]
+        const res = await fetch(`/comments/${commentId}`, {
+            method: 'DELETE'
+        })
+
+        const data = await res.json()
+        if (data.message === "Success") {
+            const container = document.querySelector(`#comment-container-${commentId}`)
+            container.remove()
+        }
+    })
+
+}

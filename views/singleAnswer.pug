@@ -14,9 +14,9 @@ block content
       textarea(name='content' value=content)
       button(type='submit') Add Comment
   each comment in comments
-    div.comment-feed
+    div(id=`comment-container-${comment.id}`)
       h3= comment.User.username
       span= comment.content
       if userId === comment.User.id
-      button(type="submit") Edit
-      button(type="submit") Delete
+      button(id=`comment-delete-${comment.id}` type="submit").delete-cmt-btn Delete
+      //- button(type="submit") Edit

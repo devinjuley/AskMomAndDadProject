@@ -28,9 +28,10 @@ const commentValidator = [
     .exists({ checkFalsy: true })
     .withMessage('Please provide a comment'),
 ]
-
+//create a comment
 router.post('/:id(\\d+)', requireAuth, csrfProtection, commentValidator, asyncHandler(async (req, res) => {
   const { content } = req.body;
+  console.log(req.params)
   const validatorErrors = validationResult(req)
   const userId = req.session.auth.userId;
   const answerId = parseInt(req.params.id, 10);
@@ -55,6 +56,7 @@ router.post('/:id(\\d+)', requireAuth, csrfProtection, commentValidator, asyncHa
   }
 }))
 
+//delete an answer
 router.delete('/:id(\\d+)', asyncHandler(async (req, res) => {
   const answerId = req.params.id
   const answer = await db.Answer.findByPk(answerId)
@@ -65,6 +67,19 @@ router.delete('/:id(\\d+)', asyncHandler(async (req, res) => {
     res.json({ message: "Failure" })
   }
 }))
+
+//delete a comment
+// router.delete('/:id(\\d+)', asyncHandler(async (req, res) => {
+//   const answerId = req.params.id
+//   const answer = await db.Answer.findByPk(answerId)
+//   if (answer) {
+//     await answer.destroy()
+//     res.json({ message: "Success" })
+//   } else {
+//     res.json({ message: "Failure" })
+//   }
+// }))
+
 
 
 module.exports = router;

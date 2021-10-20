@@ -6,14 +6,15 @@ const logger = require('morgan');
 const { sequelize } = require('./db/models');
 const session = require('express-session');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
-const {restoreUser} = require('./auth')
+const { restoreUser } = require('./auth')
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const questionsRouter = require('./routes/questions');
-const answersRouter= require('./routes/answers');
+const answersRouter = require('./routes/answers');
+const commentsRouter = require('./routes/comments');
 
 
-const {v4: uuidv4} = require('uuid');
+const { v4: uuidv4 } = require('uuid');
 const { sessionSecret } = require('./config');
 console.log(uuidv4())
 const app = express();
@@ -37,9 +38,9 @@ app.use(
     saveUninitialized: false,
     resave: false,
   })
-  );
+);
 
-  // create Session table if it doesn't already exist
+// create Session table if it doesn't already exist
 app.use(restoreUser);
 store.sync();
 
@@ -47,6 +48,7 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/questions', questionsRouter);
 app.use('/answers', answersRouter);
+app.use('/comments', commentsRouter)
 
 // Custom error handlers
 
