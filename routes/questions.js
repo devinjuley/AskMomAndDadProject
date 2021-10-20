@@ -8,10 +8,10 @@ const { loginUser, logoutUser, requireAuth } = require('../auth');
 
 
 
-router.get('/', requireAuth, asyncHandler(async (req, res) => {
+router.get('/', requireAuth, csrfProtection, asyncHandler(async (req, res) => {
   const questions = await db.Question.findAll({ include: [db.Category, db.User] })
   const userId = req.session.auth.userId;
-  res.render('questionFeed', { questions, userId })
+  res.render('questionFeed', { questions, userId, csrfToken: req.csrfToken() })
 }))
 
 router.get('/new', requireAuth, csrfProtection, asyncHandler(async (req, res) => {
@@ -56,6 +56,7 @@ const answerValidator = [
 ]
 
 
+
 router.post('/:id(\\d+)', requireAuth, csrfProtection, answerValidator, asyncHandler(async (req, res) => {
   const { content } = req.body;
   const userId = req.session.auth.userId;
@@ -83,6 +84,28 @@ router.post('/:id(\\d+)', requireAuth, csrfProtection, answerValidator, asyncHan
     res.render('singleQuestion', { csrfToken: req.csrfToken(),question,answers, errors, content, user: req.body })
   }
 }))
+
+
+// //form request
+// router.post('/:id(\\d+)/delete', csrfProtection, asyncHandler(async(req, res) => {
+//   const questionId = req.params.id;
+//   const question = await db.Question.findByPk(questionId)
+//   await question.destroy();
+//   res.redirect('/questions')
+// }))
+
+//ajax request
+router.delete('/:id(\\d+)/',asyncHandler (async(req, res) => {
+  const questionId = req.params.id
+  const question = await db.Question.findByPk(questionId)
+  if (question) {
+      await question.destroy()
+      res.json({message: "Success"})
+  } else {
+      res.json({message: "Failure"})
+  }
+}))
+
 
 
 
