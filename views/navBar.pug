@@ -1,8 +1,12 @@
-div.nav
-    a(href='/') Home
-    a(href='/questions/new') Add Question
-    a(href='/users/logout') Logout
-    div
-        form(action='' method='post')
-            input(type="text" placeholder="Search..." name="search")
-            button(type="submit") Search
+header
+    img(src='https://i.imgur.com/22BqSWG.png')
+    nav
+        ul
+            li
+                a(href='/questions') Home
+            li: a(href='/questions/new') Add Question
+            li: a(href='/users/logout') Logout
+            li: div
+                form(action='' method='post')
+                    input(type="text" placeholder="Search..." name="search")
+                    button(type="submit") Search
