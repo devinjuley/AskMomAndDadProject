@@ -9,7 +9,7 @@ block content
       p= question.content
       if userId === question.User.id
         button(type="submit") Edit
-        button(type="submit") Delete
+        button(type="submit").delete-btn Delete
     div#answer-box
       form(action=`/questions/${question.id}` method='post')
        input(type='hidden' name='_csrf' value=csrfToken)
