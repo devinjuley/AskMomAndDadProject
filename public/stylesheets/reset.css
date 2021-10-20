@@ -4,15 +4,28 @@ body {
 }
 
 a {
-  color: #00B7FF;
+  color: #00b7ff;
 }
 
 * {
   box-sizing: border-box;
 }
 
-h1, h2, h3, h4, h5, h6, a, ol, li, ul, div, span,
-body, header, nav {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+a,
+ol,
+li,
+ul,
+div,
+span,
+body,
+header,
+nav {
   font-size: 1rem;
   color: inherit;
   background-color: transparent;
@@ -26,10 +39,39 @@ h1 {
   font-size: 2rem;
 }
 
-#question-box{
-  display:inline;
+#question-box {
+  display: inline;
   border: solid 1px grey;
   width: 100px;
   height: 100px;
+}
 
+header {
+  background-color: rgb(65, 188, 225);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px 10%;
+}
+
+#logo {
+  height: 25px;
+  width: 150px;
+  background: no-repeat url("https://i.imgur.com/22BqSWG.png");
+  background-size: 100%;
+  border: 0px;
+  cursor: pointer;
+}
+
+nav a {
+  list-style: none;
+  display: inline-block;
+  padding: 0px 20px;
+  text-decoration: none;
+}
+
+nav li {
+  list-style: none;
+  display: inline-block;
+  padding: 0px 20px;
 }
