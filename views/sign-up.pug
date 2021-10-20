@@ -1,24 +1,30 @@
-extends layout
+doctype html
+html
+  head
+      block head
+        title="Express Starter App"
+        link(rel='stylesheet' href='/stylesheets/index.css')
+  body
+      block content
+        include utils.pug
 
-include utils.pug
+        append head
+          //- add page specific styles by appending to the head
+          link(rel="stylesheet" href="/stylesheets/index.css")
+          //- add page specific js
+          script(src="/javascripts/index.js" type="module" defer)
 
-append head
-  //- add page specific styles by appending to the head
-  link(rel="stylesheet" href="/stylesheets/index.css")
-  //- add page specific js
-  script(src="/javascripts/index.js" type="module" defer)
-
-block content
-  div#sign-up
-    h1 Sign Up
-    +validationErrorSummary(errors)
-    form(action='/users/signup' method='post')
-      input(type='hidden' name='_csrf' value=csrfToken)
-      +field('Username', 'username', user.username)
-      +field('Email Address', 'email', user.email)
-      +field('Password', 'password', user.password, 'password')
-      +field('Confirm Password', 'confirmPassword', '', 'password')
-      div
-        button(type='submit') Register
-      div
-        p: a(href='/') Have an account already?
+        block content
+          div#splash
+            h1 Sign Up
+            +validationErrorSummary(errors)
+            form(action='/users/signup' method='post')
+              input(type='hidden' name='_csrf' value=csrfToken)
+              +field('', 'username', user.username, placeholder = "Username")
+              +field('', 'email', user.email, placeholder = "Email")
+              +field('', 'password', user.password, 'password', placeholder = "Password")
+              +field('', 'confirmPassword', '', 'password', placeholder = "Confirm Password")
+              div#splashbutton
+                button(type='submit') Register
+              div#splashbutton
+                p: a(href='/') Have an account already?

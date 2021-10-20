@@ -1,22 +1,28 @@
-extends layout
+doctype html
+html
+  head
+      block head
+        title="Express Starter App"
+        link(rel='stylesheet' href='/stylesheets/index.css')
+  body
+      block content
+        include utils.pug
 
-include utils.pug
+        append head
+          //- add page specific styles by appending to the head
+          link(rel="stylesheet" href="/stylesheets/index.css")
+          //- add page specific js
+          script(src="/javascripts/index.js" type="module" defer)
 
-append head
-  //- add page specific styles by appending to the head
-  link(rel="stylesheet" href="/stylesheets/index.css")
-  //- add page specific js
-  script(src="/javascripts/index.js" type="module" defer)
-
-block content
-  div#login
-    h1 Login
-    +validationErrorSummary(errors)
-    form(action='/users/login' method='post')
-      input(type='hidden' name='_csrf' value=csrfToken)
-      +field('Username', 'username', user.username)
-      +field('Password', 'password', '', 'password')
-      div
-        button(type='submit') Login
-      div
-        p: a(href='/users/signup') Don't have an account?
+        block content
+          div#splash
+            h1 Login
+            +validationErrorSummary(errors)
+            form(action='/users/login' method='post')
+              input(type='hidden' name='_csrf' value=csrfToken)
+              +field('', 'username', user.username, placeholder = "Username")
+              +field('', 'password', '', 'password', placeholder = "Password")
+              div#splashbutton
+                button(type='submit') Login
+              div#splashbutton
+                p: a(href='/users/signup') Don't have an account?

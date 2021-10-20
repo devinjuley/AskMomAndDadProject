@@ -2,3 +2,67 @@ h1 {
     color: #555555;
 }
 
+body {
+    background: rgb(255,0,220);
+    background: linear-gradient(194deg, rgba(255,0,220,1) 43%, rgba(0,212,255,1) 91%);
+    background-size: cover;
+    height: auto;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+}
+
+form{
+    width: 100%;
+    padding: 10px 15px;
+    margin: 5px 0;
+    box-sizing: border-box;
+}
+
+input {
+    background: #0000000a;
+    box-sizing: border-box;
+    border-radius: 20px;
+    color: #eee;
+    font-size: 18px;
+    height: 100%;
+    padding: 4px 20px 0;
+    width: 100%;
+  }
+
+#splash{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    width: 428px;
+    height: 613px;
+    left: 118px;
+    top: 205px;
+    padding: 50px;
+
+    background: #FFFFFF;
+    box-sizing: border-box;
+    border-radius: 30px;
+}
+
+button {
+    border: 1px ;
+    color: white;
+    background-color:#00B7FF;
+    border-radius: 35px;
+    width: 120px;
+    height: auto;
+    margin: 10px;
+    padding: 10px;
+    font-size: 14px;
+}
+
+button:hover{
+    background-color: rgba(0, 213, 255, 0.692)
+}
+
+#splashbutton {
+    display: flex;
+    justify-content: center;
+}
