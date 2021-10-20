@@ -1,72 +1,90 @@
 h1 {
-    color: #555555;
+  color: #555555;
 }
 
-*{
-    font-family: Arial, Helvetica, sans-serif;
+* {
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 body {
-    background: rgb(255,0,220);
-    background: linear-gradient(194deg, rgba(255,0,220,1) 43%, rgba(0,212,255,1) 91%);
-    background-size: cover;
-    height: auto;
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  background: rgb(255, 0, 220);
+  background: linear-gradient(
+    194deg,
+    rgba(255, 0, 220, 1) 43%,
+    rgba(0, 212, 255, 1) 91%
+  );
+  background-size: cover;
+  height: auto;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-form{
-    width: 100%;
-    box-sizing: border-box;
-    line-height: 10px;
+form {
+  width: 100%;
+  box-sizing: border-box;
+  line-height: 10px;
 }
 
 input {
-    box-sizing: border-box;
-    border-radius: 20px;
-    color: rgba(0, 0, 0, 0.6);
-    font-size: 18px;
-    height: 100%;
-    padding: 10px 15px;
-    width: 100%;
-    border: 2px solid #D5D5D5;
-  }
+  box-sizing: border-box;
+  border-radius: 20px;
+  color: rgba(0, 0, 0, 0.6);
+  font-size: 18px;
+  height: 100%;
+  padding: 10px 15px;
+  width: 100%;
+  border: 2px solid #d5d5d5;
+}
 
-#splash{
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    justify-content: center;
-    width: 428px;
-    height: fit-content;
-    left: 118px;
-    top: 205px;
-    padding: 50px;
+#splash {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  width: 428px;
+  height: fit-content;
+  left: 118px;
+  top: 205px;
+  padding: 50px;
 
-    background: #FFFFFF;
-    box-sizing: border-box;
-    border-radius: 30px;
+  background: #ffffff;
+  box-sizing: border-box;
+  border-radius: 30px;
 }
 
 button {
-    border: 1px ;
-    color: white;
-    background-color:#00B7FF;
-    border-radius: 35px;
-    width: 120px;
-    height: auto;
-    margin: 10px;
-    padding: 10px;
-    font-size: 14px;
+  border: 1px;
+  color: white;
+  background-color: #00b7ff;
+  border-radius: 35px;
+  width: 120px;
+  height: auto;
+  margin: 10px;
+  padding: 10px;
+  font-size: 14px;
 }
 
-button:hover{
-    background-color: rgba(0, 213, 255, 0.692)
+button:hover {
+  background-color: rgba(0, 213, 255, 0.692);
 }
 
 #splashbutton {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
+}
+
+#errors {
+  box-sizing: border-box;
+  border-radius: 20px;
+  background-color: rgba(255, 0, 0, 0.22);
+  color: rgb(167, 9, 9);
+  font-size: 14px;
+  height: 100%;
+  padding: 10px 15px;
+  width: 100%;
+  /* border: 1px solid rgba(255, 0, 0, 0.2); */
+  margin-bottom: 15px;
+  line-height: 25px;
 }
