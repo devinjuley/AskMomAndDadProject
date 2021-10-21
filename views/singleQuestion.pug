@@ -2,11 +2,11 @@ extends layout
 include utils
 block content
     +validationErrorSummary(errors)
-    div#question-box
+    div#question-box.post
       h3= question.User.username
-      h2= question.title
-      span= question.Category.category
-      p= question.content
+      span.cat= question.Category.category
+      h2.title= question.title
+      p.con= question.content
       if userId === question.User.id
         form(action=`/questions/${question.id}/delete` method="post")
           input(type="hidden" name="_csrf" value=csrfToken)
@@ -14,16 +14,16 @@ block content
           //- button(type="submit") Edit
         //- button(type="submit") Edit
         //- button(type="submit").delete-btn Delete
-    div#answer-box
+    div#answer-box.post
       form(action=`/questions/${question.id}` method='post')
        input(type='hidden' name='_csrf' value=csrfToken)
-       textarea(name='content' value=content)
-       button(type='submit') Add Answer
+       textarea.answer-content(name='content' value=content)
+       button.edit-delete(type='submit') Add Answer
     each answer in answers
       div.post(id=`answer-container-${answer.id}`)
         h3= answer.User.username
-        span= answer.content
-        a(href=`/answers/${answer.id}`) Comments
+        span.con= answer.content
+        a.edit-delete(href=`/answers/${answer.id}`) Comments
         if userId === answer.User.id
           button(id=`answer-delete-${answer.id}` type="submit").delete-ans-btn Delete
           //- button(type="submit") Edit

@@ -3,18 +3,20 @@ include utils
 block content
     each question in questions
       div.post(id=`question-container-${question.id}`)
-        a(href=`/questions/${question.id}`)= question.title
-        div.category
-          span= question.Category.category
-        br
-        div.line
-        div.content
-          p= question.content
-          if userId === question.User.id
-            button(id=`question-delete-${question.id}` type="submit").delete-btn Delete
-            form(action=`/questions/${question.id}/edit` method='get')
-            input(type='hidden' name='_csrf' value=csrfToken)
-            button(id=`question-edit-${question.id}` type="submit").edit-btn Edit
-          //- form(action=`/questions/${question.id}/delete` method="post")
-          //-   input(type="hidden" name="_csrf" value=csrfToken)
-          //-   button(id=`delete-${question.id}`).delete-btn Delete Question
+        div.user-icon-username
+          img.user-icon(src='https://cdn-icons.flaticon.com/png/512/1144/premium/1144760.png?token=exp=1634833231~hmac=03c0aa954c57875f10c1369ef5e71a98')
+          span.span-css= question.User.username
+          span.cat= question.Category.category
+        div
+          a.title(href=`/questions/${question.id}`)= question.title
+          div
+            p.con= question.content
+            div.edit-delete
+              if userId === question.User.id
+                button(id=`question-delete-${question.id}` type="submit").delete-btn Delete
+                form(action=`/questions/${question.id}/edit` method='get')
+                  input(type='hidden' name='_csrf' value=csrfToken)
+                  button(id=`question-edit-${question.id}` type="submit").edit-btn Edit
+              //- form(action=`/questions/${question.id}/delete` method="post")
+              //-   input(type="hidden" name="_csrf" value=csrfToken)
+              //-   button(id=`delete-${question.id}`).delete-btn Delete Question
