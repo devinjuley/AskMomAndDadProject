@@ -78,7 +78,7 @@ router.post('/signup', csrfProtection, userValidators,
       user.hashedPassword = hashedPassword;
       await user.save();
       loginUser(req, res, user);
-      res.redirect('/questions');
+      // res.redirect('/questions');
     } else {
       const errors = validatorErrors.array().map((error) => error.msg);
       res.render('sign-up', {
@@ -112,7 +112,7 @@ router.post('/login', csrfProtection, loginValidators, asyncHandler(async (req, 
       const passwordMatch = await bcrypt.compare(password, user.hashedPassword.toString());
       if (passwordMatch) {
         loginUser(req, res, user);
-        return res.redirect('/questions');
+        // return res.redirect('/questions');
       }
     }
 
@@ -128,6 +128,20 @@ router.post('/login', csrfProtection, loginValidators, asyncHandler(async (req, 
   });
 
 }))
+
+router.post('/loginDemo', asyncHandler(async(req,res) => {
+  /*
+  username: demo
+  email: demo@demo.com
+  password: Demo!1
+  */
+  const demoUser = await db.User.findOne({ where: { username:'demo' } });
+  loginUser(req, res, demoUser);
+  // return res.redirect('/questions');
+
+}))
+
+
 
 router.post('/logout', (req, res) => {
   logoutUser(req, res);
