@@ -4,8 +4,8 @@ nav
             //- img(src='https://i.imgur.com/22BqSWG.png')
         li: a(href='/questions/new') Add Question
         li: div
-            form(action='' method='post')
-                input(type="text" placeholder="Search..." name="search")
+            form(action='/questions' method='post')
+                input(type="search" placeholder="Search..." name="term" required)
                 button(class="searchbutton" type="submit") Search
         li
             if locals.authenticated

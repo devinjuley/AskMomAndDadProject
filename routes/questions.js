@@ -5,6 +5,7 @@ const { csrfProtection, asyncHandler } = require('./utils');
 const bcrypt = require('bcryptjs');
 const db = require('../db/models');
 const { loginUser, logoutUser, requireAuth } = require('../auth');
+const { Op } = require('sequelize');
 
 
 
@@ -12,6 +13,22 @@ router.get('/', requireAuth, csrfProtection, asyncHandler(async (req, res) => {
   const questions = await db.Question.findAll({ include: [db.Category, db.User] })
   const userId = req.session.auth.userId;
   res.render('questionFeed', { questions, userId, csrfToken: req.csrfToken() })
+}))
+
+// SEARCH FUNCTIONALITY
+router.post('/', requireAuth, asyncHandler(async(req, res) => {
+  const {term} = req.body
+  console.log('0000000000000000000 =', req.body)
+  const userId = req.session.auth.userId;
+  const questions = await db.Question.findAll({
+    where: {
+      title: {
+        [Op.iLike]: `%${term}%`
+      }
+    },
+    include: [db.Category, db.User]
+  })
+  res.render('questionFeed', { questions, userId })
 }))
 
 router.get('/new', requireAuth, csrfProtection, asyncHandler(async (req, res) => {
