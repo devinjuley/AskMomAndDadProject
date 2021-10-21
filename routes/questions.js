@@ -113,16 +113,39 @@ router.get('/:id(\\d+)/edit', csrfProtection, async (req, res) => {
     include: db.Category
   });
   const categories = await db.Category.findAll();
-  console.log(question.Category)
+  // console.log(question.Category)
   res.render('edit-question', { csrfToken: req.csrfToken(), question, categories })
 })
 
+
+
 //edit question
-// router.post('/:id/comments/:commId/edit', csrfProtection, async(req, res) => {
-//   const comment = await Comment.findByPk(req.params.commId);
-//   comment.content = req.body.content;
-//   await comment.save()
-//   res.redirect(`/posts/${req.params.id}`)
-// })
+router.post('/:id(\\d+)/edit', csrfProtection, asyncHandler (async(req, res) => {
+  const questionId = parseInt(req.params.id, 10);
+  const questionToUpdate = await db.Question.findByPk(questionId, {
+    include: db.Category
+  });
+
+  // console.log(req.body)
+
+  const {title, content, category } = req.body
+  // const categoryName = await db.Category.findByPk(category);
+
+  // categoryId matches the model on question.js, so that's why we had to do : b/c
+  // the category doesn't match the category field in req.body which is from pug file
+  // for edit-question.pug
+
+  const question = {title, content, categoryId: category}
+
+  await questionToUpdate.update(question);
+
+
+  res.redirect(`/questions/${questionId}`);
+
+}))
+
+
+
+
 
 module.exports = router;

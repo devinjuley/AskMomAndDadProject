@@ -1,8 +1,11 @@
 extends layout
 
 include utils.pug
+//- mixin option(value, category)
+//-   option(value=value selected=(value === category)) #{category}
 
 block content
+  //- +validationErrorSummary(errors)
   div#new-question
     h1 Edit a Question
     form(action=`/questions/${question.id}/edit` method='post')
@@ -16,6 +19,8 @@ block content
       label(for="category") Category
       select(name="category" value=question.Category.category required)
         each category in categories
-          option(value= category.id)=category.category
-      br
+          option(value= category.id selected =(category.category === question.Category.category)) #{category.category}
+          //- +option(value= category.id)=category.category
+      //- select(name="category")
+      //- br
       button(type="submit") Submit
