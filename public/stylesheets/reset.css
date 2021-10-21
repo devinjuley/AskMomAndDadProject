@@ -1,8 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;500&display=swap');
+
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  background-size: cover;
-  height: auto;
+  /* padding: 50px; */
+  font-family: 'Roboto', sans-serif;
+  /* height: auto; */
   /* min-height: 100vh; */
   display: flex;
   flex-direction: column;
@@ -34,18 +35,16 @@ span,
 body,
 header,
 nav {
-  font-size: 1rem;
   color: inherit;
   background-color: transparent;
   margin: 0;
   padding: 0;
   outline: 0;
-  font-weight: normal;
 }
 
-h1 {
+/* h1 {
   font-size: 2rem;
-}
+} */
 
 #question-box {
   display: inline;
@@ -70,7 +69,7 @@ nav {
   /* background: no-repeat url("https://i.imgur.com/22BqSWG.png"); */
   color: rgb(185, 43, 39);
   font-size: x-large;
-  font-weight: 600;
+  font-weight: 800;
   /* background-size: 100%; */
   border: 0px;
   cursor: pointer;
@@ -82,7 +81,7 @@ nav a {
   display: inline-block;
   padding: 0px 20px;
   text-decoration: none;
-  font-weight: bold;
+  /* font-weight: bold; */
 
 }
 
@@ -177,20 +176,57 @@ select {
 
 label {
   background-color: white;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
 
 .post{
   display: flex;
-  align-content: center;
-  justify-content: center;
-  width: fit-content;
-  /* height: fit-content; */
+  flex-direction: column;
+  font-size: 18px;
+  font-weight: bold;
+  /* align-content: center; */
+  justify-content: left;
+  width: 600px;
+  min-height: 100px;
+  line-height: 25px;
+  padding: 10px;
+  margin: 3px;
 
-  padding: 50px;
-  margin: 50px;
 
   background: #ffffff;
   box-sizing: border-box;
-  border-radius: 10px;
+  border-radius: 5px;
+}
+
+.post:hover{
+  color: rgb(185, 43, 39);
+}
+
+.category{
+  font-size: 10px;
+  color: gray;
+  /* height: fit-content; */
+  width: fit-content;
+  padding: 3px;
+  line-height: 15px;
+  border: 1px rgb(189, 189, 189) solid;
+  /* align-items: flex-end; */
+  border-radius: 5px;
+}
+
+p {
+  background-color: white;
+}
+
+.line{
+  border: 1px solid #D5D5D5;
+  width:580px;
+  line-break: normal;
+}
+
+.content{
+  background-color: white;
+  border: 0;
+  padding: 5px;
+  font-weight: 300;
 }
