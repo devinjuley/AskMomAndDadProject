@@ -4,26 +4,25 @@ include utils.pug
 
 block content
  div
-    div.post
-      h1 Post a Question
+    div.postQuestion
+      span.userisasking #{user.username} is asking...
       br
       form(action='/questions/new' method='post')
-        input(type='hidden' name='_csrf' value=csrfToken)
-        div.forminput
-          label(for="category") Category
-          select(name="category" required)
-            each category in categories
-              option(value= category.id)=category.category
-          br
-        div.forminput
+        div
           label(for='title')
           br
           textarea.title-content(name='title' value=title required, placeholder='Start your question with "What", "How", "Why", etc.')
           br
-        div.forminput
+        div
           label(for='content')
           br
           textarea.answer-content(name='content' value=content, placeholder="More info here...")
           br
+        input(type='hidden' name='_csrf' value=csrfToken)
         div.forminput
+          div
+            label(for="category") Category
+            select(name="category" required)
+              each category in categories
+                option(value= category.id)=category.category
           button(type="submit") Submit
