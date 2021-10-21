@@ -3,8 +3,8 @@ extends layout
 include utils.pug
 
 block content
-  div.post
-    div#new-question
+ div
+    div.splash
       h1 Post a Question
       br
       form(action='/questions/new' method='post')
@@ -18,12 +18,12 @@ block content
         div.forminput
           label(for='title')
           br
-          textarea(name='title' value=title required, placeholder='Start your question with "What", "How", "Why", etc.')
+          textarea.title-content(name='title' value=title required, placeholder='Start your question with "What", "How", "Why", etc.')
           br
         div.forminput
           label(for='content')
           br
-          textarea(name='content' value=content, placeholder="More info here...")
+          textarea.answer-content(name='content' value=content, placeholder="More info here...")
           br
         div.forminput
           button(type="submit") Submit
