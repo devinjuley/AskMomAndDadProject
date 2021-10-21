@@ -3,14 +3,16 @@ include utils
 block content
     +validationErrorSummary(errors)
     div#question-box.post
-      h3= question.User.username
+      img.user-icon(src='../stylesheets/userIcon.jpg')
+      span.span-css= question.User.username
       span.cat= question.Category.category
       h2.title= question.title
       p.con= question.content
       if userId === question.User.id
         form(action=`/questions/${question.id}/delete` method="post")
           input(type="hidden" name="_csrf" value=csrfToken)
-          button(id=`question-delete-${question.id}` type="submit") Delete
+          div.edit-delete
+            button.single-question-delete-button(id=`question-delete-${question.id}` type="submit") Delete
           //- button(type="submit") Edit
         //- button(type="submit") Edit
         //- button(type="submit").delete-btn Delete
@@ -21,9 +23,12 @@ block content
        button.edit-delete(type='submit') Add Answer
     each answer in answers
       div.post(id=`answer-container-${answer.id}`)
-        h3= answer.User.username
-        span.con= answer.content
-        a.edit-delete(href=`/answers/${answer.id}`) Comments
-        if userId === answer.User.id
-          button(id=`answer-delete-${answer.id}` type="submit").delete-ans-btn Delete
-          //- button(type="submit") Edit
+        img.user-icon(src='../stylesheets/userIcon.jpg')
+        span.span-css= question.User.username
+        br
+        span.answer-content= answer.content
+          a.comment-css(href=`/answers/${answer.id}`) Comments
+        div.edit-delete
+          if userId === answer.User.id
+            button(id=`answer-delete-${answer.id}` type="submit").delete-ans-btn Delete
+            //- button(type="submit") Edit

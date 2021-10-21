@@ -3,8 +3,8 @@ include utils
 block content
     each question in questions
       div.post(id=`question-container-${question.id}`)
-        div.user-icon-username
-          img.user-icon(src='https://cdn-icons.flaticon.com/png/512/1144/premium/1144760.png?token=exp=1634833231~hmac=03c0aa954c57875f10c1369ef5e71a98')
+        div
+          img.user-icon(src='../stylesheets/userIcon.jpg')
           span.span-css= question.User.username
           span.cat= question.Category.category
         div

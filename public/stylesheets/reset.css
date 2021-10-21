@@ -250,7 +250,7 @@ label {
 
 }
 
-.delete-btn {
+.delete-btn, .delete-ans-btn {
   border-radius: 4px;
   border: 0px;
   /* background-color: white; */
@@ -300,8 +300,25 @@ label {
   vertical-align: middle;
 }
 
-.user-icon-username {
-  /* display: inline-flex;
-  flex-direction: row;
-  align-items: center; */
+.comment-css {
+  text-decoration: none;
+  border-radius: 4px;
+  border: 0px;
+  /* background-color: white; */
+  color: #4C8BF5;
+  cursor: pointer;
+  background-color: transparent;
+  display: flex;
+  font-size: 13px;
+  padding-top: 1px;
+}
+
+
+.single-question-delete-button {
+  border-radius: 4px;
+  border: 0px;
+  /* background-color: white; */
+  color: #4C8BF5;
+  cursor: pointer;
+  background-color: transparent;
 }
