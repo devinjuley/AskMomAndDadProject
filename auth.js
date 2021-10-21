@@ -5,6 +5,8 @@ const loginUser = (req, res, user) => {
     userId: user.id,
   };
   console.log(req.session);
+  // forces redirect to questions to prevent race conditions. 
+  req.session.save(()=> res.redirect('/questions'))
 };
 
 const logoutUser = (req, res) => {
