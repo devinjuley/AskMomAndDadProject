@@ -1,8 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;500&display=swap');
+
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  /* padding: 50px; */
+  font-family: 'Roboto', sans-serf;
   background-size: cover;
-  height: auto;
+  /* height: auto; */
   /* min-height: 100vh; */
   display: flex;
   flex-direction: column;
@@ -16,7 +18,7 @@ a {
 
 * {
   box-sizing: border-box;
-  background-color: #E5E5E5;
+  background-color: rgb(241,242,242);
 }
 
 h1,
@@ -29,12 +31,12 @@ a,
 ol,
 li,
 ul,
-div,
 span,
+div,
 body,
 header,
 nav {
-  font-size: 1rem;
+  /* font-size: 1rem; */
   color: inherit;
   background-color: transparent;
   margin: 0;
@@ -128,7 +130,7 @@ form {
   /* width: 100%; */
   box-sizing: border-box;
   line-height: 10px;
-  background-color: white;
+  background-color: transparent;
 }
 
 textarea {
@@ -185,26 +187,34 @@ label {
   min-width: 50px;
   align-content: center;
   justify-content: center;
-  width: 500px;
+  width: 600px;
   /* height: fit-content; */
 
   padding: 10px;
   margin: 3px;
-
+  font-weight: lighter;
   background: #ffffff;
   box-sizing: border-box;
-  border-radius: 5px;
-  box-shadow: 1px 1px #888888;
+  border-radius: 3px;
+  border: 1px solid rgb(204, 204, 204);
+  /* box-shadow: 1px 1px #888888; */
+}
+
+.post:hover {
+  background-color: rgba(242,242,242, 0.6);
 }
 
 .title {
   text-decoration: none;
-  border-bottom: 2px solid #d5d5d5;
+  /* border-bottom: 2px solid #d5d5d5; */
   display: flex;
   align-content: space-between;
   font-weight: bold;
-  font-style: italic;
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  padding-top: 10px;
+  /* line-height: 40px; */
+  /* font-family: 'Roboto', sans-serif; */
+  /* font-style: italic; */
+  /* font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; */
 }
 
 .edit-delete {
@@ -214,31 +224,85 @@ label {
 }
 
 .cat {
-  font-size: small;
-  font-style: italic;
-  display: flex;
-  justify-content: right;
+  /* font-size: small;
+  /* font-style: italic; */
+  /* display: flex; */
+  /* flex-direction: row-reverse;
+  justify-content: flex-end; */
+  /* justify-content: space-between;  */
+  /* float: right; */
+  display: inline-flex;
+  float: right;
+  /* padding-top: 6px; */
+  /* vertical-align: middle; */
+  font-weight: lighter;
+  color: gray;
+  margin-top: 2px;
+  border-radius: 5px;
+  padding: 3px;
+  border: 1px rgb(189,189,189) solid;
 }
 
 .con {
   width: fit-content;
-  background-color: #ffffff;
+  /* background-color: #ffffff; */
+  font-weight: lighter;
+  background-color: transparent;
+  
 }
 
 .delete-btn {
   border-radius: 4px;
+  border: 0px;
+  /* background-color: white; */
+  color: #4C8BF5;
+  cursor: pointer;
+  background-color: transparent;
 }
 
 .edit-btn {
   border-radius: 4px;
+  border: 0px;
+  background-color: transparent;
+  color: #4C8BF5;
+  cursor: pointer;
 }
 
 .answer-content {
-  width: 475px;
+  width: 575px;
   height: 100px;
 }
 
 .title-content {
   width: 475px;
   height: 50px;
+}
+
+.span-css {
+  display: inline-flex;
+  background-color: transparent;
+  padding-left: 5px;
+  /* padding-top: 4px; */
+  vertical-align: middle;
+  font-weight: lighter;
+}
+
+.title:hover {
+  text-decoration: underline;
+  color: black;
+}
+
+.user-icon {
+  display: inline-flex;
+  border-radius: 100%;
+  width: 30px;
+  height: 30px;
+  /* display: inline-block; */
+  vertical-align: middle;
+}
+
+.user-icon-username {
+  /* display: inline-flex;
+  flex-direction: row;
+  align-items: center; */
 }
