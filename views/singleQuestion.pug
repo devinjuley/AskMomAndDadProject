@@ -19,7 +19,7 @@ block content
     div#answer-box
       form(action=`/questions/${question.id}` method='post')
        input(type='hidden' name='_csrf' value=csrfToken)
-       textarea.answer-content(name='content' value=content placeholder='Type here...')
+       textarea.answer-content(name='content' value=content placeholder='Type here...' required)
        br
        button.addanswerbutton(type='submit') Add Answer
     each answer in answers

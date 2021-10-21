@@ -16,7 +16,7 @@ block content
         div
           label(for='content')
           br
-          textarea.answer-content(name='content' value=content, placeholder="More info here...")
+          textarea.question-content(name='content' value=content, placeholder="More info here...")
           br
         input(type='hidden' name='_csrf' value=csrfToken)
         div.forminput
@@ -25,4 +25,4 @@ block content
             select(name="category" required)
               each category in categories
                 option(value= category.id)=category.category
-          button(type="submit") Submit
+          button.add-question(type="submit") Submit
