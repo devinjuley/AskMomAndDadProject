@@ -78,6 +78,10 @@ nav {
   /* filter: invert(1); */
 }
 
+select {
+  margin-left: 5px;
+}
+
 nav a {
   list-style: none;
   display: inline-block;
@@ -135,6 +139,7 @@ form {
 textarea {
   background-color: white;
   width: 300px;
+  overflow-wrap: break-word;
 }
 
 input {
@@ -148,7 +153,7 @@ input {
   background-color: white;
 }
 
-select {
+/* select {
   background-color: white;
   box-sizing: border-box;
   border-radius: 50px;
@@ -158,27 +163,74 @@ select {
   border: none;
   border: 2px solid #d5d5d5;
   background-color: white;
-}
+  font-size: 12px;
+  padding: 10px 8px 10px 14px;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  overflow: hidden;
+  position: relative;
+  background: white;
+  line-height: 1;
+  border: 0;
+  padding: 0;
+  border-radius: 0;
+  width: 120%;
+  position: relative;
+  z-index: 10;
+  width: 50%;
+  font-size: 1em;
+  background:url('arrow.png') no-repeat;
+  background-position:80% center;
+} */
 
 .forminput{
-  padding: 10px;
+  padding-top: 10px;
+  padding-bottom: 5px;
+  color:grey;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .forminput button {
   border: 1px;
   color: white;
-  background-color: #00b7ff;
+  background-color: rgb(185, 43, 39);
   border-radius: 35px;
-  width: 120px;
+  width: 100px;
   height: auto;
-  margin: 10px;
   padding: 10px;
   font-size: 14px;
+  cursor: pointer;
+  float:right;
 }
+
+.userisasking{
+  color:grey;
+  font-weight: lighter;
+  font-size: 20px;
+  line-height: 10px;
+}
+
+.forminput button:hover{
+  background-color: rgba(185, 43, 39, 0.6);
+}
+
+select {
+  background-color: white;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  font-size: 12px;
+  width: 100px;
+  color: grey;
+  border: 1px solid #fff;
+}
+
+select option { color: transparent; }
 
 label {
   background-color: white;
-  font-family: 'Roboto', sans-serif;
 }
 
 .post{
@@ -216,10 +268,33 @@ label {
   /* font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; */
 }
 
+.singlequestion-title{
+  text-decoration: none;
+  /* border-bottom: 2px solid #d5d5d5; */
+  display: flex;
+  align-content: space-between;
+  font-weight: bold;
+  padding-top: 10px;
+}
+
+
 .edit-delete {
   display: flex;
   /* justify-content: flex-end; */
   flex-direction: row-reverse;
+}
+
+.addanswerbutton{
+  border: 1px;
+  color: white;
+  background-color: rgb(185, 43, 39);
+  border-radius: 35px;
+  width: 100px;
+  height: auto;
+  padding: 10px;
+  font-size: 14px;
+  cursor: pointer;
+  float:right;
 }
 
 .cat {
@@ -268,12 +343,75 @@ label {
 }
 
 .answer-content {
-  width: 575px;
-  height: 100px;
+  width: 538px;
+  display: inline-block;
+  align-content: center;
+  justify-content: center;
+  min-width: 50px;
+  /* height: fit-content; */
+
+  padding: 10px;
+  margin: 3px;
+  font-weight: lighter;
+  background: #ffffff;
+  box-sizing: border-box;
+  border-radius: 3px;
+  border: 1px solid rgb(204, 204, 204);
+  /* box-shadow: 1px 1px #888888; */
+}
+
+.answer-post {
+  width: fit-content;
+  display: inline-block;
+  align-content: center;
+  justify-content: center;
+  /* height: fit-content; */
+
+  padding: 10px;
+  /* margin: 3px; */
+  font-weight: lighter;
+  background: #ffffff;
+  box-sizing: border-box;
+  border-radius: 3px;
+}
+
+.commentdeletebuttons{
+  display: flex;
+  justify-content: space-between;
+}
+
+.answer-container{
+  width: 538px;
+  padding: 10px;
+  background-color: white;
+  border: 1px solid rgb(204, 204, 204);
+  border-radius: 3px;
+  margin: 3px;
+}
+
+#errors{
+  box-sizing: border-box;
+  border-radius: 20px;
+  background-color: rgba(255, 0, 0, 0.22);
+  color: rgb(167, 9, 9);
+  font-size: 14px;
+  height: 100%;
+  padding: 10px 15px;
+  width: 600px;
+  border: 1px solid rgba(255, 0, 0, 0.2);
+  margin-bottom: 15px;
+  line-height: 25px;
+}
+
+.answer-box {
+  margin: 10px;
+  padding: 30px;
+  background-color: white;
+  border: 1px solid grey;
 }
 
 .title-content {
-  width: 475px;
+  width: 538px;
   height: 50px;
 }
 
@@ -313,6 +451,11 @@ label {
   padding-top: 1px;
 }
 
+.commenticon{
+  width: 25px;
+  height: 25px;
+  margin-left: 10px;
+}
 
 .single-question-delete-button {
   border-radius: 4px;
@@ -321,4 +464,27 @@ label {
   color: #4C8BF5;
   cursor: pointer;
   background-color: transparent;
+}
+
+textarea{
+  resize: none;
+  border: 1px solid rgb(201, 201, 201);
+  border-radius: 5px;
+  font-size: 12px;
+  padding: 5px;
+}
+
+::placeholder{
+  font-size: 12px;
+  /* padding: 5px; */
+}
+
+.postQuestion{
+  border: 1px solid rgb(201, 201, 201);
+  background-color: white;
+  width: 600px;
+  margin: 10px;
+  padding: 30px;
+  border-radius: 3px;
+  height:390px;
 }

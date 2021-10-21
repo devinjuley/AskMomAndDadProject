@@ -6,7 +6,7 @@ block content
       img.user-icon(src='../stylesheets/userIcon.jpg')
       span.span-css= question.User.username
       span.cat= question.Category.category
-      h2.title= question.title
+      span.singlequestion-title= question.title
       p.con= question.content
       if userId === question.User.id
         form(action=`/questions/${question.id}/delete` method="post")
@@ -16,19 +16,23 @@ block content
           //- button(type="submit") Edit
         //- button(type="submit") Edit
         //- button(type="submit").delete-btn Delete
-    div#answer-box.post
+    div#answer-box
       form(action=`/questions/${question.id}` method='post')
        input(type='hidden' name='_csrf' value=csrfToken)
-       textarea.answer-content(name='content' value=content)
-       button.edit-delete(type='submit') Add Answer
+       textarea.answer-content(name='content' value=content placeholder='Type here...')
+       br
+       button.addanswerbutton(type='submit') Add Answer
     each answer in answers
-      div.post(id=`answer-container-${answer.id}`)
+      div.answer-container(id=`answer-container-${answer.id}`)
         img.user-icon(src='../stylesheets/userIcon.jpg')
         span.span-css= question.User.username
         br
-        span.answer-content= answer.content
-          a.comment-css(href=`/answers/${answer.id}`) Comments
-        div.edit-delete
-          if userId === answer.User.id
-            button(id=`answer-delete-${answer.id}` type="submit").delete-ans-btn Delete
+        span.answer-post= answer.content
+        div.commentdeletebuttons
+          div
+            a.comment-css(href=`/answers/${answer.id}`)
+              img.commenticon(src='../stylesheets/chatbubble.jpg')
+          div.edit-delete
+            if userId === answer.User.id
+              button(id=`answer-delete-${answer.id}` type="submit").delete-ans-btn Delete
             //- button(type="submit") Edit
