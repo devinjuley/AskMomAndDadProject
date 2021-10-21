@@ -134,12 +134,13 @@ form {
   box-sizing: border-box;
   line-height: 10px;
   background-color: transparent;
+  overflow-wrap: break-word;
 }
 
 textarea {
+  overflow-wrap: break-word;
   background-color: white;
   width: 300px;
-  overflow-wrap: break-word;
 }
 
 input {
@@ -361,11 +362,13 @@ label {
 }
 
 .answer-post {
-  width: fit-content;
+  width: 516px;
   display: inline-block;
   align-content: center;
   justify-content: center;
   /* height: fit-content; */
+  overflow-wrap: break-word;
+
 
   padding: 10px;
   /* margin: 3px; */
@@ -488,3 +491,21 @@ textarea{
   border-radius: 3px;
   height:390px;
 }
+
+.question-content {
+  width: 538px;
+  display: inline-block;
+  align-content: center;
+  justify-content: center;
+  min-width: 50px;
+  /* height: fit-content; */
+
+  padding: 10px;
+  height: 200px;
+  font-weight: lighter;
+  background: #ffffff;
+  box-sizing: border-box;
+  border-radius: 3px;
+  border: 1px solid rgb(204, 204, 204);
+}
+

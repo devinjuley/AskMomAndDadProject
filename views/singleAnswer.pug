@@ -4,7 +4,7 @@ block content
   +validationErrorSummary(errors)
   div#answer-box
     h3= answer.User.username
-    p= answer.content
+    span.answer-post= answer.content
     if userId === answer.User.id
       button(type="submit") Edit
       button(type="submit") Delete

@@ -6,6 +6,14 @@ const bcrypt = require('bcryptjs');
 const db = require('../db/models');
 const { loginUser, logoutUser, requireAuth } = require('../auth');
 
+
+//edit a comment
+
+
+
+
+
+
 // delete a comment
 router.delete('/:id(\\d+)', asyncHandler(async (req, res) => {
     const commentId = req.params.id
