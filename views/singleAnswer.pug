@@ -9,7 +9,7 @@ block content
       if userId === answer.User.id
         form(action=`/answers/${answer.id}/delete` method="post")
           input(type="hidden" name="_csrf" value=csrfToken)
-          button(id=`answer-delete-${answer.id}` type="submit").edit-btn Deletee
+          button(id=`answer-delete-${answer.id}` type="submit").edit-btn Delete
         form(action=`/answers/${answer.id}/edit` method='get')
           input(type='hidden' name='_csrf' value=csrfToken)
           button(id=`answer-edit-${answer.id}` type="submit").edit-btn Edit
@@ -18,11 +18,15 @@ block content
     form(action=`/answers/${answer.id}` method='post')
       input(type='hidden' name='_csrf' value=csrfToken)
       textarea(name='content' value=content)
-      button(type='submit') Add Comment
+      button(type='submit').addanswerbutton Add Comment
   each comment in comments
     div.post(id=`comment-container-${comment.id}`)
       h3= comment.User.username
       span= comment.content
+    div.edit-delete
       if userId === comment.User.id
-      button(id=`comment-delete-${comment.id}` type="submit").delete-cmt-btn Delete
+      button(id=`comment-delete-${comment.id}` type="submit").delete-cmt-btn.edit-btn Delete
+      form(action=`/comments/${comment.id}/edit` method='get')
+        input(type='hidden' name='_csrf' value=csrfToken)
+        button(id=`comment-edit-${comment.id}` type="submit").edit-btn Edit
       //- button(type="submit") Edit

@@ -7,10 +7,26 @@ const db = require('../db/models');
 const { loginUser, logoutUser, requireAuth } = require('../auth');
 
 
-//edit a comment
+//edit a comment, get form
+router.get('/:id(\\d+)/edit', csrfProtection, async (req, res) => {
+    const comment = await db.Comment.findByPk(req.params.id);
+    res.render('edit-comment', { csrfToken: req.csrfToken(), comment})
+  })
+
+// edit a comment, post form
+router.post('/:id(\\d+)/edit', csrfProtection, asyncHandler (async(req, res) => {
+    const commentId = parseInt(req.params.id, 10);
+    const commentToUpdate = await db.Comment.findByPk(commentId, {
+        include: db.Answer
+    });
+
+    const {content} = req.body
 
 
-
+    const comment = {content}
+    await commentToUpdate.update(comment);
+    res.redirect(`/answers/${commentToUpdate.Answer.id}`);
+  }))
 
 
 
