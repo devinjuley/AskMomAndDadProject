@@ -112,7 +112,7 @@ router.post('/login', csrfProtection, loginValidators, asyncHandler(async (req, 
       const passwordMatch = await bcrypt.compare(password, user.hashedPassword.toString());
       if (passwordMatch) {
         loginUser(req, res, user);
-        // return res.redirect('/questions');
+        return res.redirect('/questions');
       }
     }
 
@@ -129,13 +129,13 @@ router.post('/login', csrfProtection, loginValidators, asyncHandler(async (req, 
 
 }))
 
-router.post('/loginDemo', asyncHandler(async(req,res) => {
+router.post('/loginDemo', asyncHandler(async (req, res) => {
   /*
   username: demo
   email: demo@demo.com
   password: Demo!1
   */
-  const demoUser = await db.User.findOne({ where: { username:'demo' } });
+  const demoUser = await db.User.findOne({ where: { username: 'demo' } });
   loginUser(req, res, demoUser);
   // return res.redirect('/questions');
 

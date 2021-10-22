@@ -2,21 +2,26 @@ extends layout
 include utils
 block content
   +validationErrorSummary(errors)
-  div#answer-box
-    h3= answer.User.username
+  div.answer-container
+    img.user-icon(src='../stylesheets/userIcon.jpg')
+    span.span-css= answer.User.username
     span.answer-post= answer.content
-    if userId === answer.User.id
-      button(type="submit") Edit
-      button(type="submit") Delete
+    div.edit-delete
+      if userId === answer.User.id
+        button(id=`answer-delete-${answer.id}` type="submit").delete-ans-btn Delete
+        //- button(type="submit") Edit
   div#comment-box
     form(action=`/answers/${answer.id}` method='post')
       input(type='hidden' name='_csrf' value=csrfToken)
-      textarea(name='content' value=content)
-      button(type='submit') Add Comment
+      textarea.answer-content(name='content' value=content placeholder='Type here...')
+      br
+      button.addanswerbutton(type='submit') Comment
   each comment in comments
-    div.post(id=`comment-container-${comment.id}`)
-      h3= comment.User.username
-      span= comment.content
-      if userId === comment.User.id
-      button(id=`comment-delete-${comment.id}` type="submit").delete-cmt-btn Delete
+    div.answer-container(id=`comment-container-${comment.id}`)
+      img.user-icon(src='../stylesheets/userIcon.jpg')
+      span.span-css= comment.User.username
+      span.answer-post= comment.content
+      div.edit-delete
+        if userId === comment.User.id
+          button(id=`comment-delete-${comment.id}` type="submit").delete-cmt-btn Delete
       //- button(type="submit") Edit

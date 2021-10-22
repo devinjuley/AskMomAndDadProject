@@ -21,7 +21,7 @@ block content
        input(type='hidden' name='_csrf' value=csrfToken)
        textarea.answer-content(name='content' value=content placeholder='Type here...' required)
        br
-       button.addanswerbutton(type='submit') Add Answer
+       button.addanswerbutton(type='submit') Answer
     each answer in answers
       div.answer-container(id=`answer-container-${answer.id}`)
         img.user-icon(src='../stylesheets/userIcon.jpg')

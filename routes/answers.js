@@ -66,6 +66,7 @@ router.delete('/:id(\\d+)', asyncHandler(async (req, res) => {
   } else {
     res.json({ message: "Failure" })
   }
+  res.redirec
 }))
 
 //delete a comment
