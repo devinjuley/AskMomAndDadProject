@@ -5,6 +5,7 @@ block content
     div#question-box.post
       img.user-icon(src='../stylesheets/userIcon.jpg')
       span.span-css= question.User.username
+      //- span.phrase-css= 'asked'
       span.cat= question.Category.category
       span.singlequestion-title= question.title
       p.con= question.content
@@ -26,7 +27,8 @@ block content
     each answer in answers
       div.answer-container(id=`answer-container-${answer.id}`)
         img.user-icon(src='../stylesheets/userIcon.jpg')
-        span.span-css= question.User.username
+        span.span-css= answer.User.username
+        span.phrase-css= 'answered'
         br
         span.answer-post= answer.content
         div.commentdeletebuttons
@@ -38,7 +40,7 @@ block content
               button(id=`answer-delete-${answer.id}` type="submit").delete-ans-btn Delete
                 form(action=`/answers/${answer.id}/edit` method='get')
                   input(type='hidden' name='_csrf' value=csrfToken)
-                  button(id=`answer-edit-${answer.id}` type="submit").edit-btn Edittt
+                  button(id=`answer-edit-${answer.id}` type="submit").edit-btn Edit
               //- need to edit this route for edit a answer and just edit button
 
 

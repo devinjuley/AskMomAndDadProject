@@ -1,8 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;500&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;500&display=swap");
 
 body {
   /* padding: 50px; */
-  font-family: 'Roboto', sans-serf;
+  font-family: "Roboto", sans-serf;
   background-size: cover;
   /* height: auto; */
   /* min-height: 100vh; */
@@ -20,6 +20,8 @@ a {
   box-sizing: border-box;
   /* background-color: rgb(241,242,242); */
   background: linear-gradient(180deg, rgba(241,242,242,1) 50%, rgba(255,228,228,1) 90%) fixed;
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue",
+  Helvetica, Arial, "Lucida Grande", sans-serif;
 }
 
 h1,
@@ -63,7 +65,7 @@ nav {
   justify-content: space-around;
   padding: 5px;
   flex-wrap: wrap-reverse;
-  white-space:nowrap
+  white-space: nowrap;
 }
 
 #logo {
@@ -89,7 +91,6 @@ nav a {
   padding: 0px 20px;
   text-decoration: none;
   /* font-weight: bold; */
-
 }
 
 nav li {
@@ -115,6 +116,7 @@ nav li:hover {
   background-color: rgba(185, 43, 39, 0.5);
   color: white;
 }
+
 .searchbutton {
   padding: 5px 25px;
   background-color: rgb(185, 43, 39);
@@ -126,8 +128,9 @@ nav li:hover {
   transition: all 0.3s ease 0s;
 }
 
+.addanswerbutton:hover,
 .searchbutton:hover {
-  background-color: rgba(185, 44, 39, 0.568)
+  background-color: rgba(185, 44, 39, 0.568);
 }
 
 form {
@@ -186,10 +189,11 @@ input {
   background-position:80% center;
 } */
 
-.forminput{
+.forminput {
   padding-top: 10px;
   padding-bottom: 5px;
-  color:grey;
+  color: grey;
+  background-color: white;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -205,23 +209,23 @@ input {
   padding: 10px;
   font-size: 14px;
   cursor: pointer;
-  float:right;
+  float: right;
 }
 
-.userisasking{
-  color:grey;
+.userisasking {
+  color: grey;
   font-weight: lighter;
   font-size: 20px;
   line-height: 10px;
 }
 
-.forminput button:hover{
+.forminput button:hover {
   background-color: rgba(185, 43, 39, 0.6);
 }
 
 select {
-  background-color: white;
-  font-family: 'Roboto', sans-serif;
+  /* background-color: white; */
+  font-family: "Roboto", sans-serif;
   font-weight: 300;
   font-size: 12px;
   width: 135px;
@@ -229,13 +233,11 @@ select {
   border: 1px solid #fff;
 }
 
-select option { color: transparent; }
-
 label {
   background-color: white;
 }
 
-.post{
+.post {
   display: inline-block;
   min-width: 50px;
   align-content: center;
@@ -254,7 +256,7 @@ label {
 }
 
 .post:hover {
-  background-color: rgba(242,242,242, 0.6);
+  background-color: rgba(242, 242, 242, 0.6);
 }
 
 .title {
@@ -262,15 +264,18 @@ label {
   /* border-bottom: 2px solid #d5d5d5; */
   display: flex;
   align-content: space-between;
-  font-weight: bold;
-  padding-top: 10px;
+  /* font-weight:bold; */
+  font-stretch:semi-expanded;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size:larger;
+  padding-top: 15px;
   /* line-height: 40px; */
   /* font-family: 'Roboto', sans-serif; */
   /* font-style: italic; */
   /* font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; */
 }
 
-.singlequestion-title{
+.singlequestion-title {
   text-decoration: none;
   /* border-bottom: 2px solid #d5d5d5; */
   display: flex;
@@ -279,24 +284,25 @@ label {
   padding-top: 10px;
 }
 
-
 .edit-delete {
   display: flex;
   /* justify-content: flex-end; */
   flex-direction: row-reverse;
 }
 
-.addanswerbutton{
-  border: 1px;
+.addanswerbutton {
+  border: none;
   color: white;
   background-color: rgb(185, 43, 39);
   border-radius: 35px;
-  width: 100px;
+  width: auto;
   height: auto;
-  padding: 10px;
+  padding: 7px 20px;
   font-size: 14px;
   cursor: pointer;
-  float:right;
+  float: right;
+  margin: 10px 0px;
+  transition: all 0.3s ease 0s;
 }
 
 .cat {
@@ -316,7 +322,7 @@ label {
   margin-top: 2px;
   border-radius: 5px;
   padding: 3px;
-  border: 1px rgb(189,189,189) solid;
+  border: 1px rgb(189, 189, 189) solid;
 }
 
 .con {
@@ -324,14 +330,15 @@ label {
   /* background-color: #ffffff; */
   font-weight: lighter;
   background-color: transparent;
-
 }
 
-.delete-btn, .delete-ans-btn, .delete-cmt-btn {
+.delete-btn,
+.delete-ans-btn,
+.delete-cmt-btn {
   border-radius: 4px;
   border: 0px;
   /* background-color: white; */
-  color: #4C8BF5;
+  color: #4c8bf5;
   cursor: pointer;
   background-color: transparent;
 }
@@ -340,7 +347,7 @@ label {
   border-radius: 4px;
   border: 0px;
   background-color: transparent;
-  color: #4C8BF5;
+  color: #4c8bf5;
   cursor: pointer;
 }
 
@@ -353,12 +360,13 @@ label {
   /* height: fit-content; */
 
   padding: 10px;
-  margin: 3px;
+  /* margin: 3px; */
   font-weight: lighter;
   background: #ffffff;
   box-sizing: border-box;
   border-radius: 3px;
   border: 1px solid rgb(204, 204, 204);
+  /* background-color: transparent; */
   /* box-shadow: 1px 1px #888888; */
 }
 
@@ -370,7 +378,6 @@ label {
   /* height: fit-content; */
   overflow-wrap: break-word;
 
-
   padding: 10px;
   /* margin: 3px; */
   font-weight: lighter;
@@ -379,12 +386,29 @@ label {
   border-radius: 3px;
 }
 
-.commentdeletebuttons{
+.comment-post {
+  width: 450px;
+  display: inline-block;
+  align-content: center;
+  justify-content: center;
+  /* height: fit-content; */
+  overflow-wrap: break-word;
+
+  padding: 10px;
+  /* margin: 3px; */
+  font-weight: lighter;
+  background: white;
+  box-sizing: border-box;
+  border-radius: 3px;
+  margin-left: 25px;
+}
+
+.commentdeletebuttons {
   display: flex;
   justify-content: space-between;
 }
 
-.answer-container{
+.answer-container {
   width: 538px;
   padding: 10px;
   background-color: white;
@@ -393,7 +417,8 @@ label {
   margin: 3px;
 }
 
-#errors{
+
+#errors {
   box-sizing: border-box;
   border-radius: 20px;
   background-color: rgba(255, 0, 0, 0.22);
@@ -447,7 +472,7 @@ label {
   border-radius: 4px;
   border: 0px;
   /* background-color: white; */
-  color: #4C8BF5;
+  color: #4c8bf5;
   cursor: pointer;
   background-color: transparent;
   display: flex;
@@ -455,7 +480,7 @@ label {
   padding-top: 1px;
 }
 
-.commenticon{
+.commenticon {
   width: 25px;
   height: 25px;
   margin-left: 10px;
@@ -465,12 +490,12 @@ label {
   border-radius: 4px;
   border: 0px;
   /* background-color: white; */
-  color: #4C8BF5;
+  color: #4c8bf5;
   cursor: pointer;
   background-color: transparent;
 }
 
-textarea{
+textarea {
   resize: none;
   border: 1px solid rgb(201, 201, 201);
   border-radius: 5px;
@@ -478,19 +503,19 @@ textarea{
   padding: 5px;
 }
 
-::placeholder{
+::placeholder {
   font-size: 12px;
   /* padding: 5px; */
 }
 
-.postQuestion{
+.postQuestion {
   border: 1px solid rgb(201, 201, 201);
   background-color: white;
   width: 600px;
   margin: 10px;
   padding: 30px;
   border-radius: 3px;
-  height:390px;
+  height: 390px;
 }
 
 .question-content {
@@ -508,4 +533,13 @@ textarea{
   box-sizing: border-box;
   border-radius: 3px;
   border: 1px solid rgb(204, 204, 204);
+}
+
+.phrase-css {
+  color:grey;
+  font-weight: lighter;
+  font-size: 10px;
+  line-height: 10px;
+  font-style: italic;
+  padding-left: 5px;
 }

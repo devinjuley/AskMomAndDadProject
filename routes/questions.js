@@ -10,14 +10,17 @@ const { Op } = require('sequelize');
 
 // homepage for questionFeed
 router.get('/', requireAuth, csrfProtection, asyncHandler(async (req, res) => {
-  const questions = await db.Question.findAll({ include: [db.Category, db.User] })
+  const questions = await db.Question.findAll({
+    include: [db.Category, db.User],
+    order: [['createdAt', 'DESC']]
+  })
   const userId = req.session.auth.userId;
   res.render('questionFeed', { questions, userId, csrfToken: req.csrfToken() })
 }))
 
 // SEARCH FUNCTIONALITY
-router.post('/', requireAuth, asyncHandler(async(req, res) => {
-  const {term} = req.body
+router.post('/', requireAuth, asyncHandler(async (req, res) => {
+  const { term } = req.body
   console.log('0000000000000000000 =', req.body)
   const userId = req.session.auth.userId;
   const questions = await db.Question.findAll({
@@ -62,7 +65,8 @@ router.get('/:id(\\d+)', requireAuth, csrfProtection, asyncHandler(async (req, r
     where: {
       questionId: question.id
     },
-    include: db.User
+    include: db.User,
+    order: [['createdAt', 'DESC']]
   })
 
   res.render('singleQuestion', { question, userId, answers, csrfToken: req.csrfToken() })
@@ -145,7 +149,7 @@ router.get('/:id(\\d+)/edit', csrfProtection, async (req, res) => {
 })
 
 //edit question form from the questionFeed
-router.post('/:id(\\d+)/edit', csrfProtection, asyncHandler (async(req, res) => {
+router.post('/:id(\\d+)/edit', csrfProtection, asyncHandler(async (req, res) => {
   const questionId = parseInt(req.params.id, 10);
   const questionToUpdate = await db.Question.findByPk(questionId, {
     include: db.Category
@@ -153,14 +157,14 @@ router.post('/:id(\\d+)/edit', csrfProtection, asyncHandler (async(req, res) => 
 
   // console.log(req.body)
 
-  const {title, content, category } = req.body
+  const { title, content, category } = req.body
   // const categoryName = await db.Category.findByPk(category);
 
   // categoryId matches the model on question.js, so that's why we had to do : b/c
   // the category doesn't match the category field in req.body which is from pug file
   // for edit-question.pug
 
-  const question = {title, content, categoryId: category}
+  const question = { title, content, categoryId: category }
   await questionToUpdate.update(question);
   res.redirect(`/questions/${questionId}`);
 }))
