@@ -32,9 +32,9 @@ body {
 }
 
 #slogan{
-  float:right;
+  float:left;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  font-size: 110px;
+  font-size: 5vw;
   /* margin-left: 300px; */
   font-weight: bolder;
 }
