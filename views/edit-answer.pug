@@ -11,3 +11,14 @@ block content
       textarea(name='content' value=answer.content)=answer.content
       br
       button(type="submit") Submit
+
+
+    //- div#new-question.postQuestion
+    //- span.userisasking Edit Answer
+    //- form(action=`/answers/${answer.id}/edit` method='post')
+    //-   input(type='hidden' name='_csrf' value=csrfToken)
+    //-   div
+    //-     br
+    //-     textarea.answer-content(name='content' value=answer.content)=answer.content
+
+    //-     button.add-question(type="submit") Submit
