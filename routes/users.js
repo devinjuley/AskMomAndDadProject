@@ -112,7 +112,7 @@ router.post('/login', csrfProtection, loginValidators, asyncHandler(async (req, 
       const passwordMatch = await bcrypt.compare(password, user.hashedPassword.toString());
       if (passwordMatch) {
         loginUser(req, res, user);
-        return res.redirect('/questions');
+        // return res.redirect('/questions');
       }
     }
 

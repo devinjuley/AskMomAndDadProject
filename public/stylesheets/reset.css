@@ -18,7 +18,8 @@ a {
 
 * {
   box-sizing: border-box;
-  background-color: rgb(241,242,242);
+  /* background-color: rgb(241,242,242); */
+  background: linear-gradient(180deg, rgba(241,242,242,1) 50%, rgba(255,228,228,1) 90%) fixed;
 }
 
 h1,
@@ -508,4 +509,3 @@ textarea{
   border-radius: 3px;
   border: 1px solid rgb(204, 204, 204);
 }
-
