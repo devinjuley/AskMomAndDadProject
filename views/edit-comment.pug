@@ -3,11 +3,12 @@ extends layout
 include utils.pug
 
 block content
+  br
   div#new-question
-    h1 Edit a Comment
+    span.userisasking Edit comment
     form(action=`/comments/${comment.id}/edit` method='post')
       input(type='hidden' name='_csrf' value=csrfToken)
-      label(for='content') Comment
-      textarea(name='content' value=comment.content)=comment.content
+      label(for='content')
+      textarea.answer-content(name='content' value=comment.content)=comment.content
       br
-      button(type="submit") Submit
+      button.addanswerbutton(type="submit") Submit

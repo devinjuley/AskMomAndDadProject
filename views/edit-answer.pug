@@ -3,14 +3,16 @@ extends layout
 include utils.pug
 
 block content
+  br
   div#new-question
-    span.userisasking Edit a Answer
+    span.userisasking Edit answer
+      br
     form(action=`/answers/${answer.id}/edit` method='post')
       input(type='hidden' name='_csrf' value=csrfToken)
-      label(for='content') Answer
-      textarea(name='content' value=answer.content)=answer.content
+      label(for='content')
+      textarea.answer-content(name='content' value=answer.content)=answer.content
       br
-      button(type="submit") Submit
+      button.addanswerbutton(type="submit") Submit
 
 
     //- div#new-question.postQuestion

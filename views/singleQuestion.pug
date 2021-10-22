@@ -5,6 +5,7 @@ block content
     div#question-box.post
       img.user-icon(src='../stylesheets/userIcon.jpg')
       span.span-css= question.User.username
+      //- span.phrase-css= 'asked'
       span.cat= question.Category.category
       span.singlequestion-title= question.title
       p.con= question.content
@@ -27,6 +28,7 @@ block content
       div.answer-container(id=`answer-container-${answer.id}`)
         img.user-icon(src='../stylesheets/userIcon.jpg')
         span.span-css= answer.User.username
+        span.phrase-css= 'answered'
         br
         span.answer-post= answer.content
         div.commentdeletebuttons

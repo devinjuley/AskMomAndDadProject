@@ -6,6 +6,7 @@ block content
         div
           img.user-icon(src='../stylesheets/userIcon.jpg')
           span.span-css= question.User.username
+          //- span.phrase-css= 'asked'
           span.cat= question.Category.category
         div
           a.title(href=`/questions/${question.id}`)= question.title
