@@ -5,9 +5,14 @@ block content
   div#answer-box
     h3= answer.User.username
     span.answer-post= answer.content
-    if userId === answer.User.id
-      button(type="submit") Edit
-      button(type="submit") Delete
+    div.edit-delete
+      if userId === answer.User.id
+        form(action=`/answers/${answer.id}/delete` method="post")
+          input(type="hidden" name="_csrf" value=csrfToken)
+          button(id=`answer-delete-${answer.id}` type="submit").single-answer-delete-button Delete
+        //- button(id=`answer-delete-${answer.id}` type="submit").delete-btn Deleteee
+        button(type="submit") Edit
+        //- button(type="submit") Deletee
   div#comment-box
     form(action=`/answers/${answer.id}` method='post')
       input(type='hidden' name='_csrf' value=csrfToken)

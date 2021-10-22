@@ -163,7 +163,6 @@ router.post('/:id(\\d+)/edit', csrfProtection, asyncHandler (async(req, res) => 
   const question = {title, content, categoryId: category}
   await questionToUpdate.update(question);
   res.redirect(`/questions/${questionId}`);
-
 }))
 
 
