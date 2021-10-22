@@ -19,7 +19,7 @@ block content
       input(type='hidden' name='_csrf' value=csrfToken)
       textarea.answer-content(name='content' value=content placeholder='Type here...')
       br
-      button(type='submit').addanswerbutton Add Comment
+      button(type='submit').addanswerbutton Comment
   each comment in comments
     div.answer-container(id=`comment-container-${comment.id}`)
       img.user-icon(src='../stylesheets/userIcon.jpg')

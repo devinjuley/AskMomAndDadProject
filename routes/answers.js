@@ -18,7 +18,8 @@ router.get('/:id(\\d+)', requireAuth, csrfProtection, asyncHandler(async (req, r
     where: {
       answerId: answer.id
     },
-    include: db.User
+    include: db.User,
+    order: [['createdAt', 'DESC']]
   })
   res.render('singleAnswer', { answer, userId, comments, csrfToken: req.csrfToken() })
 }))
@@ -88,7 +89,7 @@ router.get('/:id(\\d+)/edit', csrfProtection, asyncHandler(async (req, res) => {
 }))
 
 // posting edited answer on single question page
-router.post('/:id(\\d+)/edit', csrfProtection, asyncHandler(async(req, res) => {
+router.post('/:id(\\d+)/edit', csrfProtection, asyncHandler(async (req, res) => {
   const answerId = parseInt(req.params.id, 10);
   const answerToUpdate = await db.Answer.findByPk(answerId, {
     include: db.Question
@@ -99,9 +100,9 @@ router.post('/:id(\\d+)/edit', csrfProtection, asyncHandler(async(req, res) => {
 
   console.log("this is answerId", answerId)
 
-  const {content} = req.body
+  const { content } = req.body
 
-  const answer = {content}
+  const answer = { content }
   await answerToUpdate.update(answer)
   console.log("this is answer", answer)
   console.log("this is answerToUpdate", answerToUpdate.Question.id)
