@@ -11,11 +11,11 @@ block content
       if userId === question.User.id
         form(action=`/questions/${question.id}/delete` method="post")
           input(type="hidden" name="_csrf" value=csrfToken)
-          div.edit-delete
-            button.single-question-delete-button(id=`question-delete-${question.id}` type="submit") Delete
-          //- button(type="submit") Edit
-        //- button(type="submit") Edit
-        //- button(type="submit").delete-btn Delete
+          button(id=`question-delete-${question.id}` type="submit").single-question-delete-button Delete
+            //- form(action=`/questions/${question.id}/edit` method='POST')
+            //-   input(type='hidden' name='_csrf' value=csrfToken)
+            //-   button(id=`question-edit-${question.id}` type="submit").edit-btn Edit
+              //- edit form for the single question on single question page
     div#answer-box
       form(action=`/questions/${question.id}` method='post')
        input(type='hidden' name='_csrf' value=csrfToken)
@@ -35,4 +35,13 @@ block content
           div.edit-delete
             if userId === answer.User.id
               button(id=`answer-delete-${answer.id}` type="submit").delete-ans-btn Delete
-            //- button(type="submit") Edit
+
+
+      //- div.edit-delete
+      //-   if userId === question.User.id
+      //-     form(action=`/questions/${question.id}/delete` method="post")
+      //-       input(type="hidden" name="_csrf" value=csrfToken)
+      //-       button(id=`question-delete-${question.id}` type="submit").single-question-delete-button Delete
+      //-         form(action=`/questions/${question.id}/edit` method='POST')
+      //-           input(type='hidden' name='_csrf' value=csrfToken)
+      //-           button(id=`question-edit-${question.id}` type="submit").edit-btn Edit
