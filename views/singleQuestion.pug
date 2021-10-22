@@ -8,11 +8,12 @@ block content
       span.cat= question.Category.category
       span.singlequestion-title= question.title
       p.con= question.content
-      if userId === question.User.id
-        form(action=`/questions/${question.id}/delete` method="post")
-          input(type="hidden" name="_csrf" value=csrfToken)
-          button(id=`question-delete-${question.id}` type="submit").single-question-delete-button Delete
-            //- form(action=`/questions/${question.id}/edit` method='POST')
+      div.edit-delete
+        if userId === question.User.id
+          form(action=`/questions/${question.id}/delete` method="post")
+            input(type="hidden" name="_csrf" value=csrfToken)
+            button(id=`question-delete-${question.id}` type="submit").single-question-delete-button Delete
+              //- form(action=`/questions/${question.id}/edit` method='POST')
             //-   input(type='hidden' name='_csrf' value=csrfToken)
             //-   button(id=`question-edit-${question.id}` type="submit").edit-btn Edit
               //- edit form for the single question on single question page
