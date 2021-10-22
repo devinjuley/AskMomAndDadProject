@@ -9,10 +9,11 @@ block content
       if userId === answer.User.id
         form(action=`/answers/${answer.id}/delete` method="post")
           input(type="hidden" name="_csrf" value=csrfToken)
-          button(id=`answer-delete-${answer.id}` type="submit").single-answer-delete-button Delete
-        //- button(id=`answer-delete-${answer.id}` type="submit").delete-btn Deleteee
-        button(type="submit") Edit
-        //- button(type="submit") Deletee
+          button(id=`answer-delete-${answer.id}` type="submit").edit-btn Deletee
+        form(action=`/answers/${answer.id}/edit` method='get')
+          input(type='hidden' name='_csrf' value=csrfToken)
+          button(id=`answer-edit-${answer.id}` type="submit").edit-btn Edit
+        //- button(type="submit") Edit
   div#comment-box
     form(action=`/answers/${answer.id}` method='post')
       input(type='hidden' name='_csrf' value=csrfToken)

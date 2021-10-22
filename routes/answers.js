@@ -87,7 +87,7 @@ router.get('/:id(\\d+)/edit', csrfProtection, asyncHandler(async (req, res) => {
 }))
 
 // posting edited answer on single question page
-router.post('/:id\\d+/edit', csrfProtection, asyncHandler(async(req, res) => {
+router.post('/:id(\\d+)/edit', csrfProtection, asyncHandler(async(req, res) => {
   const answerId = parseInt(req.params.id, 10);
   const answerToUpdate = await db.Answer.findByPk(answerId, {
     include: db.Question
