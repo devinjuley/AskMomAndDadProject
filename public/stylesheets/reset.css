@@ -219,7 +219,7 @@ input {
 }
 
 select {
-  background-color: white;
+  /* background-color: white; */
   font-family: 'Roboto', sans-serif;
   font-weight: 300;
   font-size: 12px;
@@ -229,7 +229,7 @@ select {
 }
 
 label {
-  background-color: white;
+  /* background-color: white; */
 }
 
 .post{
