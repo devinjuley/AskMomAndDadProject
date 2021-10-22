@@ -6,21 +6,22 @@ include utils.pug
 
 block content
   //- +validationErrorSummary(errors)
-  div#new-question
-    h1 Edit a Question
+  div#new-question.postQuestion
+    span.userisasking Edit question
     form(action=`/questions/${question.id}/edit` method='post')
       input(type='hidden' name='_csrf' value=csrfToken)
-      label(for='title') Question
-      input(type='text' name='title' value=question.title required)
+      label(for='title')
+      textarea.answer-content(type='text' name='title' value=question.title required)=question.title
       br
-      label(for='content') Content
-      textarea(name='content' value=question.content)=question.content
-      br
-      label(for="category") Category
-      select(name="category" value=question.Category.category required)
-        each category in categories
-          option(value= category.id selected =(category.category === question.Category.category)) #{category.category}
+      //- label(for='content') Content
+      textarea.question-content(name='content' value=question.content)=question.content
+      div.forminput
+        div
+          label(for="category") Category
+          select(name="category" value=question.Category.category required)
+            each category in categories
+              option(value= category.id selected =(category.category === question.Category.category)) #{category.category}
+        button.add-question(type="submit") Submit
           //- +option(value= category.id)=category.category
       //- select(name="category")
       //- br
-      button(type="submit") Submit

@@ -2,8 +2,9 @@ extends layout
 include utils
 block content
   +validationErrorSummary(errors)
-  div#answer-box
-    h3= answer.User.username
+  div.answer-container
+    img.user-icon(src='../stylesheets/userIcon.jpg')
+    span.span-css= answer.User.username
     span.answer-post= answer.content
     div.edit-delete
       if userId === answer.User.id
@@ -13,20 +14,20 @@ block content
         form(action=`/answers/${answer.id}/edit` method='get')
           input(type='hidden' name='_csrf' value=csrfToken)
           button(id=`answer-edit-${answer.id}` type="submit").edit-btn Edit
-        //- button(type="submit") Edit
   div#comment-box
     form(action=`/answers/${answer.id}` method='post')
       input(type='hidden' name='_csrf' value=csrfToken)
-      textarea(name='content' value=content)
+      textarea.answer-content(name='content' value=content placeholder='Type here...')
+      br
       button(type='submit').addanswerbutton Add Comment
   each comment in comments
-    div.post(id=`comment-container-${comment.id}`)
-      h3= comment.User.username
-      span= comment.content
+    div.answer-container(id=`comment-container-${comment.id}`)
+      img.user-icon(src='../stylesheets/userIcon.jpg')
+      span.span-css= comment.User.username
+      span.answer-post= comment.content
     div.edit-delete
       if userId === comment.User.id
       button(id=`comment-delete-${comment.id}` type="submit").delete-cmt-btn.edit-btn Delete
       form(action=`/comments/${comment.id}/edit` method='get')
         input(type='hidden' name='_csrf' value=csrfToken)
         button(id=`comment-edit-${comment.id}` type="submit").edit-btn Edit
-      //- button(type="submit") Edit
