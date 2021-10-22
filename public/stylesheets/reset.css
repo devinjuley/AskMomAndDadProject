@@ -19,6 +19,8 @@ a {
 * {
   box-sizing: border-box;
   background-color: rgb(241, 242, 242);
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue",
+  Helvetica, Arial, "Lucida Grande", sans-serif;
 }
 
 h1,
@@ -190,6 +192,7 @@ input {
   padding-top: 10px;
   padding-bottom: 5px;
   color: grey;
+  background-color: white;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -230,7 +233,7 @@ select {
 }
 
 label {
-  /* background-color: white; */
+  background-color: white;
 }
 
 .post {
@@ -260,8 +263,11 @@ label {
   /* border-bottom: 2px solid #d5d5d5; */
   display: flex;
   align-content: space-between;
-  font-weight: bold;
-  padding-top: 10px;
+  /* font-weight:bold; */
+  font-stretch:semi-expanded;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size:larger;
+  padding-top: 15px;
   /* line-height: 40px; */
   /* font-family: 'Roboto', sans-serif; */
   /* font-style: italic; */
