@@ -2,13 +2,10 @@ extends layout
 include utils
 block content
   +validationErrorSummary(errors)
-  div.post
-    p.singlequestion-title INSERT QUESTION HERE
-    img.user-icon(src='../stylesheets/userIcon.jpg')
-
-  div.answer-container
+  div#question-box.post
     img.user-icon(src='../stylesheets/userIcon.jpg')
     span.span-css= answer.User.username
+    span.phrase-css= 'answered'
     span.answer-post= answer.content
     div.edit-delete
       if userId === answer.User.id
@@ -28,7 +25,8 @@ block content
     div.answer-container(id=`comment-container-${comment.id}`)
       img.user-icon(src='../stylesheets/userIcon.jpg')
       span.span-css= comment.User.username
-      span.comment-post= comment.content
+      span.phrase-css= 'commented'
+      span.answer-post= comment.content
       div.edit-delete
         if userId === comment.User.id
         button(id=`comment-delete-${comment.id}` type="submit").delete-cmt-btn.edit-btn Delete
