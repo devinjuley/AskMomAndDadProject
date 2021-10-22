@@ -8,7 +8,7 @@ const { loginUser, logoutUser, requireAuth } = require('../auth');
 const { Op } = require('sequelize');
 
 
-
+// homepage for questionFeed
 router.get('/', requireAuth, csrfProtection, asyncHandler(async (req, res) => {
   const questions = await db.Question.findAll({ include: [db.Category, db.User] })
   const userId = req.session.auth.userId;
@@ -31,6 +31,7 @@ router.post('/', requireAuth, asyncHandler(async(req, res) => {
   res.render('questionFeed', { questions, userId })
 }))
 
+// getting the form for adding a new question
 router.get('/new', requireAuth, csrfProtection, asyncHandler(async (req, res) => {
   const question = db.Question.build();
   const categories = await db.Category.findAll();
@@ -41,7 +42,7 @@ router.get('/new', requireAuth, csrfProtection, asyncHandler(async (req, res) =>
   });
 }))
 
-
+// posting the form for adding a new question
 router.post('/new', requireAuth, csrfProtection, asyncHandler(async (req, res) => {
   const { title, content, category } = req.body
   const userId = req.session.auth.userId;
@@ -49,6 +50,7 @@ router.post('/new', requireAuth, csrfProtection, asyncHandler(async (req, res) =
   res.redirect('/questions');
 }))
 
+// route to just get a single question and all its answers
 router.get('/:id(\\d+)', requireAuth, csrfProtection, asyncHandler(async (req, res) => {
   const questionId = parseInt(req.params.id, 10);
   const userId = req.session.auth.userId;
@@ -72,7 +74,7 @@ const answerValidator = [
     .withMessage('Please provide an answer'),
 ]
 
-
+// adding an answer on a question
 router.post('/:id(\\d+)', requireAuth, csrfProtection, answerValidator, asyncHandler(async (req, res) => {
   const { content } = req.body;
   const userId = req.session.auth.userId;
@@ -101,9 +103,17 @@ router.post('/:id(\\d+)', requireAuth, csrfProtection, answerValidator, asyncHan
   }
 }))
 
+// get form for editing a question on its own question page like http://localhost:8080/questions/26
+router.get('/:id(\\d+)/edit', csrfProtection, asyncHandler(async (req, res) => {
+  const question = await db.Question.findByPk(req.params.id, {
+    include: db.Category
+  });
+  const categories = await db.Category.findAll();
+  // console.log(question.Category)
+  res.render('edit-question', { csrfToken: req.csrfToken(), question, categories })
+}))
 
-
-// //form request
+//form request to delete a question on its own page like http://localhost:8080/questions/26
 router.post('/:id(\\d+)/delete', csrfProtection, asyncHandler(async (req, res) => {
   const questionId = req.params.id;
   console.log("this is questionId", questionId)
@@ -112,7 +122,7 @@ router.post('/:id(\\d+)/delete', csrfProtection, asyncHandler(async (req, res) =
   res.redirect('/questions')
 }))
 
-//ajax request
+//ajax request to delete a question from questionFeed (home)
 router.delete('/:id(\\d+)', asyncHandler(async (req, res) => {
   const questionId = req.params.id
   const question = await db.Question.findByPk(questionId)
@@ -124,7 +134,7 @@ router.delete('/:id(\\d+)', asyncHandler(async (req, res) => {
   }
 }))
 
-//get edit question page
+//get edit question form from the questionFeed
 router.get('/:id(\\d+)/edit', csrfProtection, async (req, res) => {
   const question = await db.Question.findByPk(req.params.id, {
     include: db.Category
@@ -134,9 +144,7 @@ router.get('/:id(\\d+)/edit', csrfProtection, async (req, res) => {
   res.render('edit-question', { csrfToken: req.csrfToken(), question, categories })
 })
 
-
-
-//edit question
+//edit question form from the questionFeed
 router.post('/:id(\\d+)/edit', csrfProtection, asyncHandler (async(req, res) => {
   const questionId = parseInt(req.params.id, 10);
   const questionToUpdate = await db.Question.findByPk(questionId, {
@@ -153,12 +161,8 @@ router.post('/:id(\\d+)/edit', csrfProtection, asyncHandler (async(req, res) => 
   // for edit-question.pug
 
   const question = {title, content, categoryId: category}
-
   await questionToUpdate.update(question);
-
-
   res.redirect(`/questions/${questionId}`);
-
 }))
 
 

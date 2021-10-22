@@ -8,20 +8,26 @@ block content
     span.answer-post= answer.content
     div.edit-delete
       if userId === answer.User.id
-        button(id=`answer-delete-${answer.id}` type="submit").delete-ans-btn Delete
-        //- button(type="submit") Edit
+        form(action=`/answers/${answer.id}/delete` method="post")
+          input(type="hidden" name="_csrf" value=csrfToken)
+          button(id=`answer-delete-${answer.id}` type="submit").edit-btn Delete
+        form(action=`/answers/${answer.id}/edit` method='get')
+          input(type='hidden' name='_csrf' value=csrfToken)
+          button(id=`answer-edit-${answer.id}` type="submit").edit-btn Edit
   div#comment-box
     form(action=`/answers/${answer.id}` method='post')
       input(type='hidden' name='_csrf' value=csrfToken)
       textarea.answer-content(name='content' value=content placeholder='Type here...')
       br
-      button.addanswerbutton(type='submit') Comment
+      button(type='submit').addanswerbutton Add Comment
   each comment in comments
     div.answer-container(id=`comment-container-${comment.id}`)
       img.user-icon(src='../stylesheets/userIcon.jpg')
       span.span-css= comment.User.username
       span.answer-post= comment.content
-      div.edit-delete
-        if userId === comment.User.id
-          button(id=`comment-delete-${comment.id}` type="submit").delete-cmt-btn Delete
-      //- button(type="submit") Edit
+    div.edit-delete
+      if userId === comment.User.id
+      button(id=`comment-delete-${comment.id}` type="submit").delete-cmt-btn.edit-btn Delete
+      form(action=`/comments/${comment.id}/edit` method='get')
+        input(type='hidden' name='_csrf' value=csrfToken)
+        button(id=`comment-edit-${comment.id}` type="submit").edit-btn Edit
