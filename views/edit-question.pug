@@ -8,7 +8,7 @@ block content
   //- +validationErrorSummary(errors)
   br
   div#new-question.postQuestion
-    span.userisasking Edit question
+    span.userisasking Edit Question
     form(action=`/questions/${question.id}/edit` method='post')
       input(type='hidden' name='_csrf' value=csrfToken)
       div
