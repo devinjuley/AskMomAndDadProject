@@ -378,6 +378,22 @@ label {
   border-radius: 3px;
 }
 
+.comment-post {
+  width: 475px;
+  display: inline-block;
+  align-content: center;
+  justify-content: center;
+  /* height: fit-content; */
+  overflow-wrap: break-word;
+
+  padding: 10px;
+  /* margin: 3px; */
+  font-weight: lighter;
+  background: #e7e8e9;
+  box-sizing: border-box;
+  border-radius: 3px;
+}
+
 .commentdeletebuttons {
   display: flex;
   justify-content: space-between;
@@ -390,6 +406,22 @@ label {
   border: 1px solid rgb(204, 204, 204);
   border-radius: 3px;
   margin: 3px;
+}
+
+.comment-container {
+  width: 510px;
+  padding: 10px;
+  background-color: #e7e8e9;
+  border: 1px solid rgb(204, 204, 204);
+  border-radius: 3px;
+  margin: 3px;
+  font-size: 11px;
+}
+
+.allCommentsBox {
+  width: 538px;
+  padding: 10px;
+  background-color: #dee0e1;
 }
 
 #errors {
