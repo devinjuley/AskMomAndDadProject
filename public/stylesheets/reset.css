@@ -219,7 +219,7 @@ input {
 }
 
 select {
-  background-color: white;
+  /* background-color: white; */
   font-family: 'Roboto', sans-serif;
   font-weight: 300;
   font-size: 12px;
@@ -228,10 +228,10 @@ select {
   border: 1px solid #fff;
 }
 
-select option { color: transparent; }
+
 
 label {
-  background-color: white;
+  /* background-color: white; */
 }
 
 .post{
