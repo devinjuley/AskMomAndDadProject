@@ -8,6 +8,9 @@ html
   body
       block content
         include utils.pug
+        div#slogan
+          <span style="color: black">Sometimes you just gotta</span><span style="color: rgb(185, 43, 39)"> #askmom&dad</span>
+        img(src="../stylesheets/laptoprender.png")
         div#splash
           h1 Login
           +validationErrorSummary(errors)
@@ -18,8 +21,8 @@ html
             +field('', 'password', '', 'password', placeholder = "Password")
             div#splashbutton
               button(type='submit') Login
-          div#splashbutton
-            form(action='/users/loginDemo' method='post')
-                button(type='submit') Demo
+            div#splashbutton
+              form(action='/users/loginDemo' method='post')
+                  button(type='submit') Demo
           div#splashbutton
             p: a(href='/users/signup') Don't have an account?
