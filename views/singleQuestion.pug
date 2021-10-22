@@ -26,7 +26,7 @@ block content
     each answer in answers
       div.answer-container(id=`answer-container-${answer.id}`)
         img.user-icon(src='../stylesheets/userIcon.jpg')
-        span.span-css= question.User.username
+        span.span-css= answer.User.username
         br
         span.answer-post= answer.content
         div.commentdeletebuttons
