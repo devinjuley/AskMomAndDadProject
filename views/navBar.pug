@@ -1,4 +1,4 @@
-nav
+nav#nav.topnav
     ul
         li: a#logo(href='/questions') ASKMOM&DAD
             //- img(src='https://i.imgur.com/22BqSWG.png')
@@ -6,7 +6,7 @@ nav
         li: div
             form(action='/questions' method='post')
                 input(type="search" placeholder="Search..." name="term" required)
-                button(class="searchbutton" type="submit") Search
+                //- button(class="searchbutton" type="submit") Search
         li
             if locals.authenticated
             span Welcome #{user.username}!
