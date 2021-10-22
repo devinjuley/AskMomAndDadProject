@@ -56,7 +56,7 @@ router.post('/:id(\\d+)', requireAuth, csrfProtection, commentValidator, asyncHa
   }
 }))
 
-//delete an answer
+//delete an answer using ajax on a single question page
 router.delete('/:id(\\d+)', asyncHandler(async (req, res) => {
   const answerId = req.params.id
   const answer = await db.Answer.findByPk(answerId)
@@ -67,6 +67,48 @@ router.delete('/:id(\\d+)', asyncHandler(async (req, res) => {
     res.json({ message: "Failure" })
   }
 }))
+
+// delete an answer using form b/c don't want to display blank page
+router.post('/:id(\\d+)/delete', csrfProtection, asyncHandler(async (req, res) => {
+  const answerId = req.params.id;
+  const answer = await db.Answer.findByPk(answerId, {
+    include: db.Question
+  })
+  await answer.destroy();
+  res.redirect(`/questions/${answer.Question.id}`) // need to fix the reroute
+}))
+
+
+
+// editing an answer on a single question page
+router.get('/:id(\\d+)/edit', csrfProtection, asyncHandler(async (req, res) => {
+  const answer = await db.Answer.findByPk(req.params.id);
+  res.render('edit-answer', { csrfToken: req.csrfToken(), answer })
+}))
+
+// posting edited answer on single question page
+router.post('/:id(\\d+)/edit', csrfProtection, asyncHandler(async(req, res) => {
+  const answerId = parseInt(req.params.id, 10);
+  const answerToUpdate = await db.Answer.findByPk(answerId, {
+    include: db.Question
+  })
+
+  // const questionId = await db.Question.findByPk()
+
+
+  console.log("this is answerId", answerId)
+
+  const {content} = req.body
+
+  const answer = {content}
+  await answerToUpdate.update(answer)
+  console.log("this is answer", answer)
+  console.log("this is answerToUpdate", answerToUpdate.Question.id)
+  res.redirect(`/answers/${answerId}`);
+  // res.redirect('/questions')
+
+}))
+
 
 //delete a comment
 // router.delete('/:id(\\d+)', asyncHandler(async (req, res) => {
