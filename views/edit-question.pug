@@ -10,11 +10,15 @@ block content
     span.userisasking Edit question
     form(action=`/questions/${question.id}/edit` method='post')
       input(type='hidden' name='_csrf' value=csrfToken)
-      label(for='title')
-      textarea.answer-content(type='text' name='title' value=question.title required)=question.title
-      br
+      div
+        label(for='title')
+        br
+        textarea.answer-content(type='text' name='title' value=question.title required)=question.title
+        br
       //- label(for='content') Content
-      textarea.question-content(name='content' value=question.content)=question.content
+      div
+        br
+        textarea.question-content(name='content' value=question.content)=question.content
       div.forminput
         div
           label(for="category") Category

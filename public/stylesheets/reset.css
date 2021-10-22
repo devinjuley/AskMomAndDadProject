@@ -228,8 +228,6 @@ select {
   border: 1px solid #fff;
 }
 
-
-
 label {
   /* background-color: white; */
 }
@@ -352,7 +350,7 @@ label {
   /* height: fit-content; */
 
   padding: 10px;
-  margin: 3px;
+  /* margin: 3px; */
   font-weight: lighter;
   background: #ffffff;
   box-sizing: border-box;
@@ -508,4 +506,3 @@ textarea{
   border-radius: 3px;
   border: 1px solid rgb(204, 204, 204);
 }
-
