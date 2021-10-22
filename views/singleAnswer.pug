@@ -2,6 +2,10 @@ extends layout
 include utils
 block content
   +validationErrorSummary(errors)
+  div.post
+    p.singlequestion-title INSERT QUESTION HERE
+    img.user-icon(src='../stylesheets/userIcon.jpg')
+
   div.answer-container
     img.user-icon(src='../stylesheets/userIcon.jpg')
     span.span-css= answer.User.username
@@ -21,13 +25,14 @@ block content
       br
       button(type='submit').addanswerbutton Comment
   each comment in comments
-    div.answer-container(id=`comment-container-${comment.id}`)
-      img.user-icon(src='../stylesheets/userIcon.jpg')
-      span.span-css= comment.User.username
-      span.answer-post= comment.content
-    div.edit-delete
-      if userId === comment.User.id
-      button(id=`comment-delete-${comment.id}` type="submit").delete-cmt-btn.edit-btn Delete
-      form(action=`/comments/${comment.id}/edit` method='get')
-        input(type='hidden' name='_csrf' value=csrfToken)
-        button(id=`comment-edit-${comment.id}` type="submit").edit-btn Edit
+    div.allCommentsBox
+      div.comment-container(id=`comment-container-${comment.id}`)
+        img.user-icon(src='../stylesheets/userIcon.jpg')
+        span.span-css= comment.User.username
+        span.comment-post= comment.content
+        div.edit-delete
+          if userId === comment.User.id
+          button(id=`comment-delete-${comment.id}` type="submit").delete-cmt-btn.edit-btn Delete
+          form(action=`/comments/${comment.id}/edit` method='get')
+            input(type='hidden' name='_csrf' value=csrfToken)
+            button(id=`comment-edit-${comment.id}` type="submit").edit-btn Edit
