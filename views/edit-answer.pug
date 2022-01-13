@@ -9,7 +9,7 @@ block content
       input(type='hidden' name='_csrf' value=csrfToken)
       div
         br
-        textarea.question-content(name='content' value=answer.content)=answer.content
+        textarea.question-content(name='content' value=answer.content required)=answer.content
       div.forminput
         div
         button.add-question(type="submit") Submit
