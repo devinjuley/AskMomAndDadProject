@@ -15,6 +15,9 @@ module.exports = {
       content: {
         type: Sequelize.TEXT
       },
+      imageURL: {
+        type: Sequelize.STRING(3000)
+      },
       userId: {
         allowNull: false,
         type: Sequelize.INTEGER,
