@@ -10,10 +10,10 @@ module.exports = {
       return Math.floor(Math.random() * (max - min) + min);
     }
     let commentArray = []
-    for (let i = 0; i < 600; i++) {
+    for (let i = 0; i < 700; i++) {
       commentArray.push({
         content: faker.lorem.sentence(),
-        answerId: getRandomInt(1, 201),
+        answerId: getRandomInt(1, 251),
         userId: getRandomInt(1, 8),
         createdAt: new Date(),
         updatedAt: new Date()

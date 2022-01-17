@@ -540,3 +540,8 @@ textarea {
   font-style: italic;
   padding-left: 5px;
 }
+
+.question-img {
+  object-fit: cover;
+  width: 100%;
+}
