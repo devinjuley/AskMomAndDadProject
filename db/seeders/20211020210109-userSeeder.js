@@ -56,6 +56,13 @@ module.exports = {
         createdAt: new Date(),
         updatedAt: new Date()
       },
+      {
+        username: 'demo',
+        email: 'demo@demo.com',
+        hashedPassword: bcrypt.hashSync('Demo!1'),
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
     ], {});
 
   },
