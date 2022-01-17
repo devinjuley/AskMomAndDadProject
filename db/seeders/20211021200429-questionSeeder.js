@@ -188,7 +188,7 @@ module.exports = {
         title: 'What should I take for a headache?',
         content: 'I want to take motrin but I think I should take tylenol instead?',
         imageURL: 'https://res.cloudinary.com/mabmab/image/upload/v1642456611/askMomDad/Screen_Shot_2022-01-17_at_1.56.44_PM_rbf1zb.png',
-        userId: 1,
+        userId: 2,
         categoryId: 4,
         createdAt: new Date(),
         updatedAt: new Date()
