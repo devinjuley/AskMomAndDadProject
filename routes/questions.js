@@ -12,7 +12,7 @@ const { Op } = require('sequelize');
 router.get('/', requireAuth, csrfProtection, asyncHandler(async (req, res) => {
   const questions = await db.Question.findAll({
     include: [db.Category, db.User],
-    order: [['createdAt', 'DESC']]
+    order: [['id', 'DESC']]
   })
   const userId = req.session.auth.userId;
   res.render('questionFeed', { questions, userId, csrfToken: req.csrfToken() })

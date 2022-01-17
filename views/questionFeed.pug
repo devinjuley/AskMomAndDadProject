@@ -12,6 +12,7 @@ block content
           a.title(href=`/questions/${question.id}`)= question.title
           div
             p.con= question.content
+            img.question-img(src=question.imageURL)
             div.edit-delete
               if userId === question.User.id
                 button(id=`question-delete-${question.id}` type="submit").delete-btn Delete
