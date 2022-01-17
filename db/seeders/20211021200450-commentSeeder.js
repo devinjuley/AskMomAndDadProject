@@ -14,7 +14,7 @@ module.exports = {
       commentArray.push({
         content: faker.lorem.sentence(),
         answerId: getRandomInt(1, 201),
-        userId: getRandomInt(1, 15),
+        userId: getRandomInt(1, 8),
         createdAt: new Date(),
         updatedAt: new Date()
       })
