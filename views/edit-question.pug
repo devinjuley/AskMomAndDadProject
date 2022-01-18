@@ -16,7 +16,11 @@ block content
         br
         textarea.answer-content(type='text' name='title' value=question.title required)=question.title
         br
-      //- label(for='content') Content
+      div
+        label(for='imageURL')
+        br
+        textarea.title-content(name='imageURL' value=question.imageURL)=question.imageURL
+        br
       div
         br
         textarea.question-content(name='content' value=question.content)=question.content

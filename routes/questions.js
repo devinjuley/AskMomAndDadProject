@@ -47,9 +47,9 @@ router.get('/new', requireAuth, csrfProtection, asyncHandler(async (req, res) =>
 
 // posting the form for adding a new question
 router.post('/new', requireAuth, csrfProtection, asyncHandler(async (req, res) => {
-  const { title, content, category } = req.body
+  const { title, content, imageURL, category } = req.body
   const userId = req.session.auth.userId;
-  const question = await db.Question.create({ title, content, userId, categoryId: category });
+  const question = await db.Question.create({ title, content, imageURL, userId, categoryId: category });
   res.redirect('/questions');
 }))
 
@@ -157,14 +157,14 @@ router.post('/:id(\\d+)/edit', csrfProtection, asyncHandler(async (req, res) => 
 
   // console.log(req.body)
 
-  const { title, content, category } = req.body
+  const { title, content, imageURL, category } = req.body
   // const categoryName = await db.Category.findByPk(category);
 
   // categoryId matches the model on question.js, so that's why we had to do : b/c
   // the category doesn't match the category field in req.body which is from pug file
   // for edit-question.pug
 
-  const question = { title, content, categoryId: category }
+  const question = { title, content, imageURL, categoryId: category }
   await questionToUpdate.update(question);
   res.redirect(`/questions/${questionId}`);
 }))
