@@ -9,6 +9,7 @@ block content
       span.cat= question.Category.category
       span.singlequestion-title= question.title
       p.con= question.content
+      img.question-img(src=question.imageURL)
       div.edit-delete
         if userId === question.User.id
           form(action=`/questions/${question.id}/delete` method="post")
