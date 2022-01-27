@@ -25,8 +25,8 @@ html
                 +field('', 'password', '', 'password', placeholder = "Password")
                 div#registerLoginButton
                   button(type='submit') Login
-                div#splashbutton
-                  form(action='/users/loginDemo' method='post')
-                    button(type='submit') Demo
-                div#splashbutton
-                  p#accountAlready: a(href='/users/signup') Don't have an account?
+              div#demoButton
+                form(action='/users/loginDemo' method='post')
+                  button(type='submit') Demo
+              div#splashbutton
+                p#accountAlready: a(href='/users/signup') Don't have an account?
