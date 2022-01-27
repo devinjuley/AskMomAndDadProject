@@ -239,7 +239,7 @@ label {
   width: 600px;
   /* height: fit-content; */
 
-  padding: 10px;
+  padding: 25px 25px;
   margin: 3px;
   font-weight: lighter;
   background: #ffffff;
@@ -544,4 +544,19 @@ textarea {
 .question-img {
   object-fit: cover;
   width: 100%;
+  border-radius: 5px;
+}
+
+.homeContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.questionsContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.categoriesContainer {
+
 }
