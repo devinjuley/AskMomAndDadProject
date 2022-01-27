@@ -3,6 +3,10 @@ h1 {
   /* background: white; */
 }
 
+a {
+  text-decoration: none;
+}
+
 * {
   font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue",
   Helvetica, Arial, "Lucida Grande", sans-serif;
@@ -115,6 +119,13 @@ button:hover {
   background: white;
 }
 
+#registerButton {
+  display: flex;
+  justify-content: center;
+  background: white;
+  padding-top: 15px;
+}
+
 .fielddiv{
   background: white;
 }
@@ -153,4 +164,12 @@ a{
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+#accountAlready a {
+  color: #555555
+}
+
+#signUpForm {
+  padding-bottom: 10px;
 }

@@ -17,16 +17,17 @@ html
             div#splash
               h1 Sign Up
               +validationErrorSummary(errors)
-              form(action='/users/signup' method='post')
-                input(type='hidden' name='_csrf' value=csrfToken)
-                +field('', 'username', user.username, placeholder = "Username")
-                br
-                +field('', 'email', user.email, placeholder = "Email")
-                br
-                +field('', 'password', user.password, 'password', placeholder = "Password")
-                br
-                +field('', 'confirmPassword', '', 'password', placeholder = "Confirm Password")
-                div#splashbutton
-                  button(type='submit') Register
-                div#splashbutton
-                  p: a(href='/') Have an account already?
+              div#signUpForm
+                form(action='/users/signup' method='post')
+                  input(type='hidden' name='_csrf' value=csrfToken)
+                  +field('', 'username', user.username, placeholder = "Username")
+                  br
+                  +field('', 'email', user.email, placeholder = "Email")
+                  br
+                  +field('', 'password', user.password, 'password', placeholder = "Password")
+                  br
+                  +field('', 'confirmPassword', '', 'password', placeholder = "Confirm Password")
+                  div#registerButton
+                    button(type='submit') Register
+                  div#splashbutton
+                    p#accountAlready: a(href='/') Have an account already?
