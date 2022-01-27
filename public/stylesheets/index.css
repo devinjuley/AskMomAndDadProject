@@ -119,7 +119,7 @@ button:hover {
   background: white;
 }
 
-#registerButton {
+#registerLoginButton {
   display: flex;
   justify-content: center;
   background: white;
