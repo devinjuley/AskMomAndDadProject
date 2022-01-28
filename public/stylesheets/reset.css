@@ -545,10 +545,12 @@ textarea {
 .phrase-css {
   color:grey;
   font-weight: lighter;
-  font-size: 10px;
-  line-height: 10px;
+  font-size: 12px;
   font-style: italic;
   padding-left: 5px;
+  vertical-align: middle;
+  display: inline-flex;
+  margin-top: 3px
 }
 
 .question-img {

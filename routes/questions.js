@@ -40,10 +40,19 @@ router.post('/', requireAuth, asyncHandler(async (req, res) => {
     where: {
       title: {
         [Op.iLike]: `%${term}%`
-      }
+      },
     },
+
     include: [db.Category, db.User]
   })
+
+  // if(questions.length) {
+  //   questions;
+  // } else {
+  //   questions = "No search results"
+  // }
+  // console.log("questionssssssssss", questions)
+
   res.render('questionFeed', { questions, userId })
 }))
 
