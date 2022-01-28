@@ -6,56 +6,76 @@ block content
         ul.categoriesList
           li
             div.categoryContainer
-              div
-                img.category-img(src='../stylesheets/categories/1.png')
-              div.categoryName Taxes
+              form(action=`/questions/1` method='get')
+                button.categoryButton( type="submit")
+                  div
+                    img.category-img(src='../stylesheets/categories/1.png')
+                  div.categoryName Taxes
           li
             div.categoryContainer
-              div
-                img.category-img(src='../stylesheets/categories/2.png')
-              div.categoryName Laundry
+              form(action=`/questions/2` method='get')
+                button.categoryButton( type="submit")
+                  div
+                    img.category-img(src='../stylesheets/categories/2.png')
+                  div.categoryName Laundry
           li
             div.categoryContainer
-              div
-                img.category-img(src='../stylesheets/categories/3.png')
-              div.categoryName Rent
+              form(action=`/questions/3` method='get')
+                button.categoryButton( type="submit")
+                  div
+                    img.category-img(src='../stylesheets/categories/3.png')
+                  div.categoryName Rent
           li
             div.categoryContainer
-              div
-                img.category-img(src='../stylesheets/categories/4.png')
-              div.categoryName Medication
+              form(action=`/questions/4` method='get')
+                button.categoryButton( type="submit")
+                  div
+                    img.category-img(src='../stylesheets/categories/4.png')
+                  div.categoryName Medication
           li
             div.categoryContainer
-              div
-                img.category-img(src='../stylesheets/categories/5.png')
-              div.categoryName Cooking
+              form(action=`/questions/5` method='get')
+                button.categoryButton( type="submit")
+                  div
+                    img.category-img(src='../stylesheets/categories/5.png')
+                  div.categoryName Cooking
           li
             div.categoryContainer
-              div
-                img.category-img(src='../stylesheets/categories/6.png')
-              div.categoryName Cleaning
+              form(action=`/questions/6` method='get')
+                button.categoryButton( type="submit")
+                  div
+                    img.category-img(src='../stylesheets/categories/6.png')
+                  div.categoryName Cleaning
           li
             div.categoryContainer
-              div
-                img.category-img(src='../stylesheets/categories/7.png')
-              div.categoryName Repairs
+              form(action=`/questions/7` method='get')
+                button.categoryButton( type="submit")
+                  div
+                    img.category-img(src='../stylesheets/categories/7.png')
+                  div.categoryName Repairs
           li
             div.categoryContainer
-              div
-                img.category-img(src='../stylesheets/categories/8.png')
-              div.categoryName Social Advice
+              form(action=`/questions/8` method='get')
+                button.categoryButton( type="submit")
+                  div
+                    img.category-img(src='../stylesheets/categories/8.png')
+                  div.categoryName Social Advice
           li
             div.categoryContainer
-              div
-                img.category-img(src='../stylesheets/categories/9.png')
-              div.categoryName
-                div Relationship
-                div Advice
+              form(action=`/questions/9` method='get')
+                button.categoryButton( type="submit")
+                  div
+                    img.category-img(src='../stylesheets/categories/9.png')
+                  div.categoryName
+                    div Relationship
+                    div Advice
           li
             div.categoryContainer
-              div
-                img.category-img(src='../stylesheets/categories/10.png')
-              div.categoryName Other
+              form(action=`/questions/10` method='get')
+                button.categoryButton( type="submit")
+                  div
+                    img.category-img(src='../stylesheets/categories/10.png')
+                  div.categoryName Other
 
       div.questionsContainer
         each question in questions
