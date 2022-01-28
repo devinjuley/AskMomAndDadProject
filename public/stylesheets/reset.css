@@ -81,6 +81,7 @@ nav {
   padding: 10px;
   flex-wrap: wrap-reverse;
   white-space: nowrap;
+  filter: drop-shadow(0.3rem 0.3rem 0.3rem rgba(161,162,164,.7));
 }
 
 #logo {
@@ -565,6 +566,8 @@ textarea {
   position: relative;
   width: 100%;
   justify-content: space-evenly;
+  top: 5px;
+  background-color: transparent !important;
 }
 
 .questionsContainer {
