@@ -3,7 +3,7 @@ include utils
 block content
     +validationErrorSummary(errors)
     div#question-box.post
-      img.user-icon(src='../stylesheets/userIcon.jpg')
+      img.user-icon(src='../stylesheets/profilePic.png')
       span.span-css= question.User.username
       //- span.phrase-css= 'asked'
       span.cat
@@ -28,7 +28,7 @@ block content
        button.addanswerbutton(type='submit') Answer
     each answer in answers
       div.answer-container(id=`answer-container-${answer.id}`)
-        img.user-icon(src='../stylesheets/userIcon.jpg')
+        img.user-icon(src='../stylesheets/profilePic.png')
         span.span-css= answer.User.username
         span.phrase-css= 'answered'
         br
