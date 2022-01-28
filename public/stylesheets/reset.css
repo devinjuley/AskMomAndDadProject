@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;500&display=swap");
 
 .top {
-  margin-top: 50px;
+  margin: 50px;
 }
 
 body {
@@ -69,18 +69,9 @@ background-color: transparent;
 }
 
 
-
-
-/* h1 {
-  font-size: 2rem;
-} */
-
-/* #question-box {
-  display: inline;
-  border: solid 1px grey;
-  width: 100px;
-  height: 100px;
-} */
+#question-box {
+  margin-top: 50px;
+}
 
 nav {
   background-color: white;
@@ -155,9 +146,16 @@ nav li:hover {
   transition: all 0.3s ease 0s;
 }
 
+.addanswerbutton {
+  margin: 15px 0px !important;
+  filter: drop-shadow(0.5rem 0.5rem 0.5rem rgba(161,162,164,.7));
+  font-weight: bold;
+}
+
 .addanswerbutton:hover,
 .searchbutton:hover {
-  background-color: rgba(185, 44, 39, 0.568);
+  background-color: rgba(92, 21, 18, 0.879);
+
 }
 
 form {
@@ -288,8 +286,14 @@ label {
 
 .edit-delete {
   display: flex;
-  /* justify-content: flex-end; */
   flex-direction: row-reverse;
+  padding-top: 15px;
+}
+
+.edit-delete button {
+
+  color: rgb(185, 43, 39);
+  font-weight: bold;
 }
 
 .addanswerbutton {
@@ -350,22 +354,19 @@ label {
 }
 
 .answer-content {
-  width: 538px;
+  margin-top: 25px;
+  width: 600px;
   display: inline-block;
   align-content: center;
   justify-content: center;
   min-width: 50px;
-  /* height: fit-content; */
-
   padding: 10px;
-  /* margin: 3px; */
   font-weight: lighter;
   background: #ffffff;
   box-sizing: border-box;
   border-radius: 3px;
   border: 1px solid rgb(204, 204, 204);
-  /* background-color: transparent; */
-  /* box-shadow: 1px 1px #888888; */
+  filter: drop-shadow(0.5rem 0.5rem 0.5rem rgba(161,162,164,.7));
 }
 
 .answer-post {
@@ -407,12 +408,13 @@ label {
 }
 
 .answer-container {
-  width: 538px;
+  width: 600px;
   padding: 10px;
   background-color: white;
   border: 1px solid rgb(204, 204, 204);
   border-radius: 3px;
   margin: 3px;
+  filter: drop-shadow(0.5rem 0.5rem 0.5rem rgba(161,162,164,.7));
 }
 
 
@@ -431,7 +433,7 @@ label {
 }
 
 .answer-box {
-  margin: 10px;
+  margin-top: 50px;
   padding: 30px;
   background-color: white;
   border: 1px solid grey;
@@ -440,6 +442,7 @@ label {
 .title-content {
   width: 538px;
   height: 50px;
+  font-weight: lighter;
 }
 
 .span-css {
