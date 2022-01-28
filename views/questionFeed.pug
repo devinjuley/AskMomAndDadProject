@@ -3,9 +3,60 @@ include utils
 block content
     section.homeContainer
       div.categoriesContainer
-        ul
-          li taxed
-          li rent
+        ul.categoriesList
+          li
+            div.categoryContainer
+              div
+                img.category-img(src='../stylesheets/categories/1.png')
+              div.categoryName Taxes
+          li
+            div.categoryContainer
+              div
+                img.category-img(src='../stylesheets/categories/2.png')
+              div.categoryName Laundry
+          li
+            div.categoryContainer
+              div
+                img.category-img(src='../stylesheets/categories/3.png')
+              div.categoryName Rent
+          li
+            div.categoryContainer
+              div
+                img.category-img(src='../stylesheets/categories/4.png')
+              div.categoryName Medication
+          li
+            div.categoryContainer
+              div
+                img.category-img(src='../stylesheets/categories/5.png')
+              div.categoryName Cooking
+          li
+            div.categoryContainer
+              div
+                img.category-img(src='../stylesheets/categories/6.png')
+              div.categoryName Cleaning
+          li
+            div.categoryContainer
+              div
+                img.category-img(src='../stylesheets/categories/7.png')
+              div.categoryName Repairs
+          li
+            div.categoryContainer
+              div
+                img.category-img(src='../stylesheets/categories/8.png')
+              div.categoryName Social Advice
+          li
+            div.categoryContainer
+              div
+                img.category-img(src='../stylesheets/categories/9.png')
+              div.categoryName
+                div Relationship
+                div Advice
+          li
+            div.categoryContainer
+              div
+                img.category-img(src='../stylesheets/categories/10.png')
+              div.categoryName Other
+
       div.questionsContainer
         each question in questions
           div.post(id=`question-container-${question.id}`)

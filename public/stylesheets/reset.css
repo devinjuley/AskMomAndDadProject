@@ -550,13 +550,48 @@ textarea {
 .homeContainer {
   display: flex;
   justify-content: center;
+  position: relative;
+  height: 10000px;
 }
 
 .questionsContainer {
   display: flex;
   flex-direction: column;
+  padding-top: 50px;
 }
 
 .categoriesContainer {
+  color: rgb(185, 43, 39);
+  font-weight: bold;
+  position: sticky;
+  border-radius: 5px;
+  top: 50px;
+  right: 45px;
+  margin-top: 50px;
+  margin-bottom: auto;
+  padding-bottom: 50px;
+  background-color: transparent !important;
+  filter: drop-shadow(0.5rem 0.5rem 0.5rem rgba(161,162,164,.7));
 
+}
+
+.category-img {
+  width: 90px;
+  background-color: transparent !important;
+}
+
+.categoryContainer {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.categoriesList {
+  list-style-type: none;
+  display: grid;
+  grid-template-columns: 1fr 1fr
+}
+
+.categoryName{
+  padding-left: 5px;
 }
