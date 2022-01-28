@@ -154,8 +154,7 @@ nav li:hover {
 
 .addanswerbutton:hover,
 .searchbutton:hover {
-  background-color: rgba(92, 21, 18, 0.879);
-
+  background-color: rgb(128, 31, 28);
 }
 
 form {
@@ -215,7 +214,10 @@ input {
 }
 
 .forminput button:hover {
-  background-color: rgba(185, 43, 39, 0.6);
+  background-color: rgb(128, 31, 28);
+
+
+
 }
 
 select {
@@ -377,7 +379,7 @@ label {
   /* height: fit-content; */
   overflow-wrap: break-word;
 
-  padding: 10px;
+  padding: 20px;
   /* margin: 3px; */
   font-weight: lighter;
   background: transparent;
@@ -405,11 +407,12 @@ label {
 .commentdeletebuttons {
   display: flex;
   justify-content: space-between;
+  /* padding-top: 10px; */
 }
 
 .answer-container {
   width: 600px;
-  padding: 10px;
+  padding: 25px;
   background-color: white;
   border: 1px solid rgb(204, 204, 204);
   border-radius: 3px;
@@ -481,9 +484,9 @@ label {
 }
 
 .commenticon {
-  width: 25px;
-  height: 25px;
-  margin-left: 10px;
+  width: 30px;
+  height: 30px;
+  background-color: transparent !important;
 }
 
 .single-question-delete-button {

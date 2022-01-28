@@ -36,7 +36,7 @@ block content
         div.commentdeletebuttons
           div
             a.comment-css(href=`/answers/${answer.id}`)
-              img.commenticon(src='../stylesheets/chatbubble.jpg')
+              img.commenticon(src='../stylesheets/commentImg.png')
           div.edit-delete
             if userId === answer.User.id
               button(id=`answer-delete-${answer.id}` type="submit").delete-ans-btn Delete
