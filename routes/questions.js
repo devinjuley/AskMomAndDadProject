@@ -18,7 +18,8 @@ router.get('/', requireAuth, csrfProtection, asyncHandler(async (req, res) => {
   res.render('questionFeed', { questions, userId, csrfToken: req.csrfToken() })
 }))
 
-router.get('/:categoryId', requireAuth, csrfProtection, asyncHandler(async (req, res) => {
+
+router.get('/category/:categoryId', requireAuth, csrfProtection, asyncHandler(async (req, res) => {
   const questions = await db.Question.findAll({
     where: {
       categoryId: req.params.categoryId
@@ -28,6 +29,7 @@ router.get('/:categoryId', requireAuth, csrfProtection, asyncHandler(async (req,
   const userId = req.session.auth.userId;
   res.render('questionFeed', { questions, userId, csrfToken: req.csrfToken() })
 }))
+
 
 // SEARCH FUNCTIONALITY
 router.post('/', requireAuth, asyncHandler(async (req, res) => {
