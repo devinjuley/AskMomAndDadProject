@@ -455,8 +455,7 @@ label {
 }
 
 .title:hover {
-  text-decoration: underline;
-  color: black;
+  color: rgb(185, 43, 39);
 }
 
 .user-icon {
