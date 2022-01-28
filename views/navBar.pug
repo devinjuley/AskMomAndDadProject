@@ -5,11 +5,9 @@ nav#nav
         li: div
             form(action='/questions' method='post')
                 input(type="search" placeholder="🔎 Search..." name="term" required)
-                //- button(class="searchbutton" type="submit") Search
         li
             if locals.authenticated
             span Welcome #{user.username}!
         li
             form(action='/users/logout' method='post')
                 button.logoutButton(type='submit') Logout
-        //- li: a(href='/users/logout') Logout

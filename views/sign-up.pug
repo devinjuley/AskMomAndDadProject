@@ -6,26 +6,28 @@ html
         link(rel='stylesheet' href='/stylesheets/index.css')
         script(src="/javascripts/index.js" type="module" defer)
   body
-      block content
-        include utils.pug
-        div#slogan
-          <span style="color: black">Sometimes you just gotta</span>
-          br
-          <span style="color: rgb(185, 43, 39)"> #askmom&dad</span>
-        img(src="../stylesheets/laptoprender.png")
-        div#splash
-          h1 Sign Up
-          +validationErrorSummary(errors)
-          form(action='/users/signup' method='post')
-            input(type='hidden' name='_csrf' value=csrfToken)
-            +field('', 'username', user.username, placeholder = "Username")
-            br
-            +field('', 'email', user.email, placeholder = "Email")
-            br
-            +field('', 'password', user.password, 'password', placeholder = "Password")
-            br
-            +field('', 'confirmPassword', '', 'password', placeholder = "Confirm Password")
-            div#splashbutton
-              button(type='submit') Register
-            div#splashbutton
-              p: a(href='/') Have an account already?
+      .container
+        .background-image
+          block content
+            include utils.pug
+            div#slogan
+              span Sometimes you just gotta
+              span#hash #askMom&Dad
+            div#centerSplash
+            div#splash
+              h1 Sign Up
+              +validationErrorSummary(errors)
+              div#signUpForm
+                form(action='/users/signup' method='post')
+                  input(type='hidden' name='_csrf' value=csrfToken)
+                  +field('', 'username', user.username, placeholder = "Username")
+                  br
+                  +field('', 'email', user.email, placeholder = "Email")
+                  br
+                  +field('', 'password', user.password, 'password', placeholder = "Password")
+                  br
+                  +field('', 'confirmPassword', '', 'password', placeholder = "Confirm Password")
+                  div#registerLoginButton
+                    button(type='submit') Register
+                  div#splashbutton
+                    p#accountAlready: a(href='/') Have an account already?

@@ -3,10 +3,11 @@ include utils
 block content
     +validationErrorSummary(errors)
     div#question-box.post
-      img.user-icon(src='../stylesheets/userIcon.jpg')
+      img.user-icon(src='../stylesheets/profilePic.png')
       span.span-css= question.User.username
       //- span.phrase-css= 'asked'
-      span.cat= question.Category.category
+      span.cat
+        img.category-img(src=`/stylesheets/categories/${question.Category.id}.png`)
       span.singlequestion-title= question.title
       p.con= question.content
       img.question-img(src=question.imageURL)
@@ -27,7 +28,7 @@ block content
        button.addanswerbutton(type='submit') Answer
     each answer in answers
       div.answer-container(id=`answer-container-${answer.id}`)
-        img.user-icon(src='../stylesheets/userIcon.jpg')
+        img.user-icon(src='../stylesheets/profilePic.png')
         span.span-css= answer.User.username
         span.phrase-css= 'answered'
         br
@@ -35,7 +36,7 @@ block content
         div.commentdeletebuttons
           div
             a.comment-css(href=`/answers/${answer.id}`)
-              img.commenticon(src='../stylesheets/chatbubble.jpg')
+              img.commenticon(src='../stylesheets/commentImg.png')
           div.edit-delete
             if userId === answer.User.id
               button(id=`answer-delete-${answer.id}` type="submit").delete-ans-btn Delete

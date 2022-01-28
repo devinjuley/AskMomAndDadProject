@@ -3,7 +3,7 @@ include utils
 block content
   +validationErrorSummary(errors)
   div#question-box.post
-    img.user-icon(src='../stylesheets/userIcon.jpg')
+    img.user-icon(src='../stylesheets/profilePic.png')
     span.span-css= answer.User.username
     span.phrase-css= 'answered'
     span.answer-post= answer.content
@@ -23,7 +23,7 @@ block content
       button(type='submit').addanswerbutton Comment
   each comment in comments
     div.answer-container(id=`comment-container-${comment.id}`)
-      img.user-icon(src='../stylesheets/userIcon.jpg')
+      img.user-icon(src='../stylesheets/profilePic.png')
       span.span-css= comment.User.username
       span.phrase-css= 'commented'
       span.answer-post= comment.content

@@ -18,6 +18,19 @@ router.get('/', requireAuth, csrfProtection, asyncHandler(async (req, res) => {
   res.render('questionFeed', { questions, userId, csrfToken: req.csrfToken() })
 }))
 
+
+router.get('/category/:categoryId', requireAuth, csrfProtection, asyncHandler(async (req, res) => {
+  const questions = await db.Question.findAll({
+    where: {
+      categoryId: req.params.categoryId
+    },
+    include: [db.Category, db.User]
+  })
+  const userId = req.session.auth.userId;
+  res.render('questionFeed', { questions, userId, csrfToken: req.csrfToken() })
+}))
+
+
 // SEARCH FUNCTIONALITY
 router.post('/', requireAuth, asyncHandler(async (req, res) => {
   const { term } = req.body
@@ -27,10 +40,19 @@ router.post('/', requireAuth, asyncHandler(async (req, res) => {
     where: {
       title: {
         [Op.iLike]: `%${term}%`
-      }
+      },
     },
+
     include: [db.Category, db.User]
   })
+
+  // if(questions.length) {
+  //   questions;
+  // } else {
+  //   questions = "No search results"
+  // }
+  // console.log("questionssssssssss", questions)
+
   res.render('questionFeed', { questions, userId })
 }))
 
