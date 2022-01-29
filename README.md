@@ -1,5 +1,5 @@
 ## Summary
-ASKMOM&DAD is a social media website, inspired by the website Quora, where users can ask questions on specific topics and get answers from other users, as well as comment on answers that were given.
+[ASKMOM&DAD](https://askmomanddad.herokuapp.com/) is a social media website, inspired by the website Quora, where users can ask questions on specific topics and get answers from other users, as well as comment on answers that were given.
 
 
 ## Overall Structure
