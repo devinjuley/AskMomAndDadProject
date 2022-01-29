@@ -78,22 +78,27 @@ block content
                   div.categoryName Other
 
       div.questionsContainer
-        each question in questions
-          div.post(id=`question-container-${question.id}`)
-            div
-              img.user-icon(src='/stylesheets/profilePic.png')
-              span.span-css= question.User.username
-              //- span.phrase-css= 'asked'
-              span.cat
-                img.category-img(src=`/stylesheets/categories/${question.Category.id}.png`)
-            div
-              a.title(href=`/questions/${question.id}`)= question.title
+        if questions.length > 0
+          each question in questions
+            div.post(id=`question-container-${question.id}`)
               div
-                p.con= question.content
-                img.question-img(src=question.imageURL)
-                div.edit-delete
-                  if userId === question.User.id
-                    button(id=`question-delete-${question.id}` type="submit").delete-btn Delete
-                    form(action=`/questions/${question.id}/edit` method='get')
-                      input(type='hidden' name='_csrf' value=csrfToken)
-                      button(id=`question-edit-${question.id}` type="submit").edit-btn Edit
+                img.user-icon(src='/stylesheets/profilePic.png')
+                span.span-css= question.User.username
+                //- span.phrase-css= 'asked'
+                span.cat
+                  img.category-img(src=`/stylesheets/categories/${question.Category.id}.png`)
+              div
+                a.title(href=`/questions/${question.id}`)= question.title
+                div
+                  p.con= question.content
+                  img.question-img(src=question.imageURL)
+                  div.edit-delete
+                    if userId === question.User.id
+                      button(id=`question-delete-${question.id}` type="submit").delete-btn Delete
+                      form(action=`/questions/${question.id}/edit` method='get')
+                        input(type='hidden' name='_csrf' value=csrfToken)
+                        button(id=`question-edit-${question.id}` type="submit").edit-btn Edit
+        else
+          div.post
+            img.no-search-img(src=`/stylesheets/spaceShip.png`)
+            div.no-search No Search Results Found

@@ -560,6 +560,30 @@ textarea {
   border-radius: 5px;
 }
 
+
+.no-search-img {
+  width: 100%;
+  border-radius: 5px;
+  background-color: transparent !important;
+  filter: drop-shadow(0.5rem 0.5rem 0.5rem rgba(161,162,164,.7));
+
+}
+
+.no-search {
+  text-decoration: none;
+  /* border-bottom: 2px solid #d5d5d5; */
+  display: flex;
+  justify-content: center;
+  /* font-weight: bold; */
+  font-stretch: semi-expanded;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: x-large;
+  color: rgb(185, 43, 39);
+  font-weight: 800;
+  padding-top: 30px;
+  filter: drop-shadow(0.5rem 0.5rem 0.5rem rgba(161,162,164,.7));
+}
+
 .homeContainer {
   display: flex;
   justify-content: center;
